@@ -1,0 +1,14 @@
+STATE CHANGE PROPERTY
+
+setScreenData((preState) =>
+      preState.map((ob, i) => {
+        if (i === index) {
+          return {
+            ...ob,
+            questions: [...ob.questions, obj],
+          };
+        } else {
+          return ob;
+        }
+      })
+    );

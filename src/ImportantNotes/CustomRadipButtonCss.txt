@@ -1,0 +1,31 @@
+CUSTOM RADIO BUTTON
+
+.gs-template-custom-input input[type=radio] {
+    appearance: none;
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 2px;
+    display: inline-grid;
+    place-content: center; 
+  }
+
+ .gs-template-custom-input  input[type=radio]::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    transform: scale(0);
+    transform-origin: bottom left;
+    background-color: #fff;
+    clip-path: polygon(13% 50%, 34% 66%, 81% 2%, 100% 18%, 39% 100%, 0 71%);
+}
+
+.gs-template-custom-input input[type=radio]:checked::before {
+    transform: scale(1);
+}
+.gs-template-custom-input input[type=radio]:checked{
+    background-color:   var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
