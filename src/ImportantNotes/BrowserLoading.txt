@@ -1,0 +1,19 @@
+<script>
+      window.onbeforeunload = function WindowLoad() {
+      inst.close();
+      inst.destroy();
+      document.getElementById('BrowserLoader').style.visibility="block";
+      }
+      window.onload = function WindowLoad() {
+            setTimeout(function(){
+          document.getElementById('root');
+          document.getElementById('BrowserLoader').style.visibility="hidden";
+            });
+      }
+      </script>
+
+
+<div id="root"></div>
+    <div id="BrowserLoader" style="width:100% ; height:100% ; position: fixed; z-index: 10000000;">
+      <img src="/images/BrowserLoader.gif" alt="" >
+    </div>

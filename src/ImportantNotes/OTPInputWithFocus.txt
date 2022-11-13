@@ -1,0 +1,79 @@
+const pasteFun = (e) => {
+    const clip = e.clipboardData.getData("text");
+    if (!/\d{6}/.test(clip)) return e.preventDefault(); // Invalid. Exit here
+    const s = { ...clip };
+
+    const Pastevalue = {
+      otp1: s[0],
+      otp2: s[1],
+      otp3: s[2],
+      otp4: s[3],
+      otp5: s[4],
+      otp6: s[5],
+    };
+    setOtp(Pastevalue);
+    document.querySelectorAll("input")[5].focus();
+  };
+
+  const OtpLength = 6;
+  const otpInputs = [];
+  for (var i = 1; i <= OtpLength; i++) {
+    otpInputs.push(
+      <input
+        key={i}
+        type="text"
+        name={"otp" + i}
+        value={Otp["otp" + i]}
+        className={
+          errorLabel === "Plaease Enter Valid OTP"
+            ? " gs-Otp-Field error"
+            : "gs-Otp-Field"
+        }
+        tabIndex={i}
+        required
+        onChange={handleChange}
+        onKeyUp={(e) => inputFocus(e)}
+        onPaste={(e) => pasteFun(e)}
+        autoComplete="off"
+        maxLength={1}
+        pattern="\d{1}"
+      />
+    );
+  }
+
+ const inputFocus = (elmnt) => {
+    const inputVale = elmnt.target.value;
+    if (elmnt.key === "Backspace") {
+      const next = elmnt.target.tabIndex - 2;
+      if (next > -1 || isNaN(parseInt(inputVale))) {
+        setErrorLabel("");
+        elmnt.target.form.elements[next].focus();
+      }
+    } else {
+      const next = elmnt.target.tabIndex;
+      if (next < 6 && !isNaN(parseInt(inputVale))) {
+        setErrorLabel("");
+        elmnt.target.form.elements[next].focus();
+      } else if (next < 7 && next >= 6 && !isNaN(parseInt(inputVale))) {
+        elmnt.target.form.elements[7].focus();
+      }
+    }
+  };
+
+//?------------------------ *ONCHANGE FUNCTION [OTP-CONFIRMATION] ------------------------
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const inputValue = parseInt(value);
+    setOtp((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+
+    if (isNaN(inputValue) && value !== "") {
+      setErrorLabel("Character Must be a Number");
+    }
+  };
+
+//?------------------------ *USE OF ABOVE CODE IN JSX FILE ------------------------
+
+<div className="gs-Otp-wrapper">{otpInputs}</div>
