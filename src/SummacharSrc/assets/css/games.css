@@ -1,0 +1,22 @@
+.sudokubox-4 {
+    width: 25%;
+    transition: all 0.2s linear;
+    
+    /* position: relative; */
+}
+
+.sudokubox-9 {
+    width: 11.11%;
+    transition: all 0.2s linear;
+    flex: none;
+    /* position: relative; */
+}
+.sudoku-container input{
+    caret-color: transparent;
+}
+.sudoku-container .blank-hole:focus{
+    /* border: 1px solid #5c56d4;
+     */
+     background-color: transparent;
+}
+

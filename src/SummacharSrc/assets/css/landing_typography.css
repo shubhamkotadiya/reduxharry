@@ -1,0 +1,249 @@
+.landing_section_header {
+    font-size: 48px;
+}
+
+.landing_section_sub_header {
+    font-size: 40px;
+}
+
+.landing_section_content {
+    font-size: 24px;
+}
+
+.landing_section_content_2 {
+    font-size: 32px;
+}
+
+.landing_section_content_3 {
+    font-size: 32px;
+}
+
+.landing_section_card_content {
+    font-size: 20px;
+}
+
+.landing_btn_nav_footer {
+    font-size: 20px;
+}
+.landing-p-primary{
+    padding: 12px;
+}
+.landing-p-h-primary{
+    padding: 5px 12px;
+}
+.landing-border-bottom-transperent{
+    border-bottom: 4px solid transparent;
+}
+@media (max-width:1920px) {
+    .landing_section_header {
+        font-size: 40px;
+    }
+
+    .landing_section_sub_header {
+        font-size: 24px;
+    }
+
+    .landing_section_content {
+        font-size: 20px;
+    }
+
+    .landing_section_content_2 {
+        font-size: 28px;
+    }
+
+    .landing_section_content_3 {
+        font-size: 28px;
+    }
+
+    .landing_section_card_content {
+        font-size: 16px;
+    }
+
+    .landing_btn_nav_footer {
+        font-size: 16px;
+    }
+}
+
+@media (max-width:1600px) {
+    .landing_section_header {
+        font-size: 32;
+    }
+
+    .landing_section_sub_header {
+        font-size: 20px;
+    }
+
+    .landing_section_content {
+        font-size: 16px;
+    }
+
+    .landing_section_content_2 {
+        font-size: 24px;
+    }
+
+    .landing_section_content_3 {
+        font-size: 24px;
+    }
+
+    .landing_section_card_content {
+        font-size: 14px;
+    }
+
+    .landing_btn_nav_footer {
+        font-size: 14px;
+    }
+}
+
+@media (max-width:1280px) {
+    .landing_section_header {
+        font-size: 24px;
+    }
+
+    .landing_section_sub_header {
+        font-size: 20px;
+    }
+
+    .landing_section_content {
+        font-size: 16px;
+    }
+
+    .landing_section_content_2 {
+        font-size: 22px;
+    }
+
+    .landing_section_content_3 {
+        font-size: 22px;
+    }
+
+    .landing_section_card_content {
+        font-size: 12px;
+    }
+
+    .landing_btn_nav_footer {
+        font-size: 12px;
+    }
+    .landing-p-h-primary{
+        padding: 5px 0px;
+    }
+}
+
+@media (max-width:960px) {
+    .landing_section_header {
+        font-size: 40px;
+    }
+
+    .landing_section_sub_header {
+        font-size: 32px;
+        padding: 0px 20px 0px 20px;
+    }
+
+    .landing_section_content {
+        font-size: 24px;
+    }
+
+    .landing_section_content_2 {
+        font-size: 24px;
+    }
+
+    .landing_section_content_3 {
+        font-size: 24px;
+    }
+
+    .landing_section_card_content {
+        font-size: 24px;
+    }
+
+    .landing_btn_nav_footer {
+        font-size: 16px;
+    }
+}
+
+@media (max-width:720px) {
+    .landing_section_header {
+        font-size: 32px;
+    }
+
+    .landing_section_sub_header {
+        font-size: 28px;
+    }
+
+    .landing_section_content {
+        font-size: 20px;
+    }
+
+    .landing_section_content_2 {
+        font-size: 22px;
+    }
+
+    .landing_section_content_3 {
+        font-size: 22px;
+    }
+
+    .landing_section_card_content {
+        font-size: 20px;
+    }
+
+    .landing_btn_nav_footer {
+        font-size: 16px;
+    }
+}
+
+@media (max-width:640px) {
+    .landing_section_header {
+        font-size: 24px;
+    }
+
+    .landing_section_sub_header {
+        font-size: 20px;
+    }
+
+    .landing_section_content {
+        font-size: 16px;
+    }
+
+    .landing_section_content_2 {
+        font-size: 18px;
+    }
+
+    .landing_section_content_3 {
+        font-size: 18px;
+    }
+
+    .landing_section_card_content {
+        font-size: 14px;
+    }
+
+    .landing_btn_nav_footer {
+        font-size: 12px;
+    }
+}
+
+@media (max-width:375px) {
+    .landing_section_header {
+        font-size: 20px;
+    }
+
+    .landing_section_sub_header {
+        font-size: 16px;
+    }
+
+    .landing_section_content {
+        font-size: 14px;
+    }
+
+    .landing_section_content_2 {
+        font-size: 16px;
+    }
+
+    .landing_section_content_3 {
+        font-size: 16px;
+    }
+
+    .landing_section_card_content {
+        font-size: 12px;
+    }
+
+    .landing_btn_nav_footer {
+        font-size: 10px;
+    }
+}

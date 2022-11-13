@@ -1,0 +1,174 @@
+.packages_options_container{
+    background-color: #E5E5E5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
+}
+
+.inner_packages_options_container{
+width: 720px;
+height: 600px;
+display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-between; */
+
+background: #FFFFFF;
+/* Signup purple shadow card */
+
+box-shadow: -20px -20px 60px rgba(217, 216, 235, 0.2), 20px 20px 60px rgba(217, 216, 235, 0.2);
+border-radius: 16px;
+padding:32px 80px
+}
+
+.packages_options_title{
+    font-size: 32px;
+    line-height: 22px;
+}
+
+.packages_types{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.background{
+    width:100%;
+    height:100vh;
+    display:block;
+
+}
+
+.logo {
+    display: flex;
+    justify-content:center;
+    padding-top:20px;
+}
+.packs{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    height:80%;
+    align-items:center;
+    min-height:400px;
+}
+
+.packages_types{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.packs img{
+height:200px;
+width:200px;
+}
+
+.block-packs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 80%;
+    align-items: center;
+    min-height: 400px;
+}
+.pack {
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    margin:0px 40px;
+    cursor:pointer;
+}
+.big {
+    text-align: center;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 140%;
+}
+
+.smallDiv {
+    font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 140%;
+/* identical to box height, or 34px */
+
+
+text-align: center;
+
+/* #4 Primary Black */
+
+color: #3A4854;
+}
+
+.account {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    text-align:center;
+    justify-content:center;
+    text-align: center;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 140%;
+}
+
+.blue {
+    color: #5c56d4;
+    text-align: center;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 140%;
+}
+
+.sign-Up {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    padding-bottom:20px;
+}
+
+    .sign-Up a {
+        color: #5c56d4;
+        text-align: center;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        margin-left:5px;
+    }
+@media(max-width:750px) {
+    .packs {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 75%;
+        align-items: center;
+        margin:30px;
+    }
+    .pack {
+        margin: 20px 0px;
+    }
+    .packs img{
+        width:150px;
+        height:150px;
+    }
+    
+    .block-packs{
+        display:block;
+    }
+}
+

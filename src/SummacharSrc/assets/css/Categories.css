@@ -1,0 +1,211 @@
+/* @font-face {
+    font-family: "Poppins Regular";
+    src: url("/src/assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+} */
+
+.outer_categories>* {
+    color: #5c543e
+}
+
+.outer_categories {
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    box-sizing: border-box;
+    padding-top: 23px;
+    flex: 1
+}
+
+.categories {
+    max-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 23px;
+}
+
+.tag {
+    font-size: 20px;
+    user-select: none;
+    color: blue
+}
+
+.categories .title {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+}
+
+.categories .category {
+    margin-top: 32px;
+}
+
+.categories .category .selected {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.categories .category .tag {
+    padding: 4px 16px;
+    border-radius: 100px;
+    background: #F7F7FD;
+    border: 1px solid #C4C2F0;
+    box-sizing: border-box;
+    margin: 24px;
+    margin-top: 0px;
+    margin-left: 0px;
+    min-width: 140px;
+    text-align: center;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    /* Secondary/#8 Light Purple */
+    color: #C4C2F0;
+}
+
+.categories .category .tag:hover {
+    cursor: pointer;
+}
+
+.categories .category .sel {
+    background: #E7E6F9;
+    border: 1px solid #5C56D4;
+    box-sizing: border-box;
+    color: #5C56D4;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.categories .category .unselected {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    /* position:absolute; */
+    bottom: 0px;
+    padding-bottom: 10px;
+    justify-content: center;
+    background-color: white;
+}
+
+.category_btn {
+    width: 100px;
+    height: 40px;
+    align-items: center;
+    padding: 0px 16px;
+    text-align: center;
+    background: #E7E6F9;
+    border: 1px solid #777777;
+    box-sizing: border-box;
+    border-radius: 1000px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.cancel {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    /* Primary/#3 Grey */
+    color: #777777;
+}
+
+.save {
+    background: #5C56D4;
+    /* Primary/ #1 Purple */
+    border: 1px solid #5C56D4;
+    box-sizing: border-box;
+    border-radius: 1000px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+    color: #FAFAFF;
+    margin-right: 72px;
+    min-width: 90px;
+}
+
+.dots {
+    background: transparent;
+    /* Primary/ #1 Purple */
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    border-radius: 1000px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+    color: #FAFAFF;
+    margin-right: 72px;
+    min-width: 90px;
+}
+
+.dots_cancel {
+    background: transparent;
+    /* Primary/#3 Grey */
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    border-radius: 1000px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+    color: #FAFAFF;
+    min-width: 90px;
+}
+
+.small_load {
+    height: 150px;
+}
+
+@media(max-width:1000px) {
+    .btns {
+        bottom: 120px;
+    }
+}
+
+@media(max-width:700px) {
+    .categories {
+        padding: 10px;
+    }
+    .outer_categories {
+        width: 100%;
+    }
+}
+
+@media(max-width:500px) {
+    .categories .title {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 120%;
+    }
+    .categories .category .tag {
+        padding: 4px 10px;
+        height: 22px;
+        min-width: 50px;
+    }
+    .save {
+        margin-right: 20px;
+    }
+}

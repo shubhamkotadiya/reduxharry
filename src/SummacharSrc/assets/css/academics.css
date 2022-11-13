@@ -1,0 +1,152 @@
+.acad-sub-grids {
+    display: grid;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative;
+}
+
+.small-topic-grids {
+    /* Done by Suraj */
+    /* flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative; */
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 5fr auto;
+    padding: 20px !important;
+    grid-gap: 35px;
+    place-items: center;
+}
+
+.subMain_container .letter_container {
+    padding: 0px 0px !important;
+}
+
+.concepts-inner {
+    max-width: 2000px;
+}
+
+.chapter-image {
+    display: flex;
+    background-color: white;
+    width: 100%;
+    font-size: 12px;
+    /* min-width: 100px; */
+    /* height: 100%; */
+    height: auto;
+    border-radius: 8px;
+    /* padding: 20px; */
+}
+
+/* .chapter-image img{
+    height: auto !important;
+} */
+.chapter-image .image-inner {
+    border-radius: 8px;
+}
+
+
+.small-topic-grids .chapter-right {
+    /* flex-direction: column;
+    justify-content: center;
+    text-align: center; */
+    display: grid;
+    place-items: center start;
+    place-self: center start;
+    height: 100%;
+}
+
+.small-topic-grids svg, .acad-sub-grids svg {
+    position: absolute;
+    /* top: 0px;
+    right: 18px; */
+}
+
+.small-topic-grids .titles {
+    padding: 5px;
+    text-align: center
+}
+
+.small-topic-grids .topicName {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.acad-sub-grids {
+    display: grid;
+    flex-direction: column;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative;
+}
+
+.Acad_container .profile-inner-container {
+    /* padding: 10px 0px 10px 0px !important; */
+}
+
+.hover-tile {
+    display: none !important;
+    background-color: #000;
+    opacity: 0.1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transition: all 0.1s linear;
+    z-index: 1;
+}
+@media (min-width: 960px) {
+.info-tile:hover .hover-tile{
+    display: flex !important;
+}
+}
+/* @media (min-width: 960px) {
+    .hover-tile {
+        display: none;
+        background-color: #000;
+        opacity: 0.1;
+        position: absolute;
+        transition: all 0.1s linear;
+        z-index: 1;
+    }
+
+} */
+
+@media (max-width: 1000px) {
+    .video_grid {
+        width: 100% !important;
+        min-height: 100% !important;
+    }
+}
+
+@media(max-width:500px) {
+    .titles {
+        font-size: 14px;
+        display: none
+    }
+
+    .topicName {
+        font-size: 14px
+    }
+}
+
+@media(max-width:480px) {
+    .topicName {
+        font-size: 12px
+    }
+
+    .small-topic-grids {
+        grid-gap: 16px;
+    }
+}
+
+@media (max-width:300px) {
+    .activity-description {
+        display: none;
+    }
+}
+
+.temp-padding .enter_animation {
+    padding-bottom: 50px !important;
+}

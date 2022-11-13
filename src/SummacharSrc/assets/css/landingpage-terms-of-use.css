@@ -1,0 +1,10 @@
+ol.terms-of-use-ol {
+    /* display: list-item; */
+    padding-left: 42px;
+}
+ol.terms-of-use-ol li{
+    display: list-item;
+    width: 100%;
+    color: #777777;
+    margin:10px 0px;
+}

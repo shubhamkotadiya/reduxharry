@@ -1,0 +1,23 @@
+.kidscorner-cell{
+    width: 150px;
+}
+.kids-corner-table{
+    border: 0.5px solid #B8B8B9;
+}
+.thead-row{
+    background-color: #E7E6F9;
+}
+.kidscorner-action-cell{
+    width: 100px;
+}
+@media(max-width:650px){
+    .kidscorner-date-cell{
+        min-width: 60px;
+    }
+    .kidscorner-action-cell{
+        width: 70px;        
+    }
+    .kidscorner-cell{
+        width: auto;
+    }
+}

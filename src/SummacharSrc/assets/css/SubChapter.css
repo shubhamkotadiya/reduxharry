@@ -1,0 +1,73 @@
+.subchapter-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.subchapter-image{
+
+}
+
+.subchapter-data{
+
+}
+
+
+.progress {
+    background-color: #F5F5F5;
+    border-radius: 13px;
+    /* (height of inner div) / 2 + padding */
+}
+
+.progress-bar {
+    background-color: #ECC249;
+    width: 0%;
+    /* Adjust with JavaScript */
+    height: 12px;
+    border-radius: 10px;
+    /* animation:progress-animation 2s linear infinite; */
+}
+@keyframes progress-animation {
+    0% {width: 0%;}
+    50% {width: 50%;}
+    100% {width: 100%;}
+}
+
+
+.progress-text{
+    color:#ECC249;
+    font-size: 27px;
+}
+
+@media (max-width: 1919px){
+    .progress-text{
+        font-size: 22px;
+    }
+}
+@media (max-width: 1599px){
+    .progress-text{
+        font-size: 18px;
+    }
+}
+@media (max-width: 1279px){
+    .progress-text{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 959px){
+    .progress-text{
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 719px){
+    .progress-text{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 639px){
+    .progress-text{
+        font-size: 14px;
+    }
+}

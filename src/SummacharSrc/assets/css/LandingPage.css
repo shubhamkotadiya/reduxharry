@@ -1,0 +1,15 @@
+:root {
+    --grey: #777777;
+}
+
+header.landingpage-navbar-container {
+    min-width: 100%;
+    height: 80px;
+    box-shadow: 1px 1px 5px var(--grey);
+}
+
+.text-underline {
+    text-decoration: 4px underline #ecc249;
+    text-underline-offset: 10px;
+}
+

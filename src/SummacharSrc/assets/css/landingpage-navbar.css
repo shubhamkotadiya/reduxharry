@@ -1,0 +1,92 @@
+.landing-page-header {
+    height: 80px;
+    background-color: white;
+    /* border-bottom: 1px solid #b8b8b9; */
+}
+.landing_page_header_logo {
+    width: 200px;
+    height: auto;
+}
+.landing_page_header_logo img {
+    height: auto;
+}
+.landing-page-nav-link-area {
+    height: 100%;
+    justify-content: flex-end !important;
+}
+/* .learn_better_container_small{
+    display: none;
+} */
+.landing_page_list_item_link {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.active_link {
+    color: #5c56d4 !important;
+    border-bottom: 4px solid #5c56d4;
+    /* text-decoration: underline !important; */
+}
+.landing-page-hamBurger-icon,
+.tool-tip-mobile-view {
+    display: none;
+}
+.landing_page_header_logo_mobile {
+    display: none;
+}
+@media (max-width: 960px) {
+    .landing-page-hamBurger-icon {
+        display: flex;
+        height: 25px;
+        width: 25px;
+    }
+    .landing-page-nav-bar-container {
+        position: fixed;
+        height: 100vh;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .landing-page-nav-link-area {
+        background-color: white;
+        position: absolute;
+        flex: none;
+        right: 10px;
+        top: 60px;
+        border-radius: 8px;
+        padding: 16px !important;
+        flex-direction: column;
+        height: auto;
+    }
+    .tool-tip-mobile-view {
+        position: absolute;
+        flex: none;
+        display: flex;
+        right: 20px;
+        top: 49px;
+        z-index: -1;
+    }
+    .landing-page-nav-link-area li {
+        padding: 10px 25px !important;
+    }
+    .landing-page-nav-link-area li a {
+        padding: 0px !important;
+    }
+}
+@media (max-width: 650px) {
+    .landing_page_header_logo {
+        display: none;
+    }
+    .landing-page-header {
+        height: 50px;
+        min-height: 50px;
+        border-bottom: none;
+    }
+    .landing_page_header_logo_mobile {
+        display: flex;
+        width: 120px;
+    }
+    /* .learn_better_container_small{
+        display: flex;
+    } */
+}

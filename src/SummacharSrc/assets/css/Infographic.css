@@ -1,0 +1,835 @@
+* {
+    --hh: 10px;
+}
+
+@media (min-width: 1920px) {
+    * {
+        --hh: 48px;
+    }
+}
+
+@media (max-width: 1919px) {
+    * {
+        --hh: 40px;
+    }
+}
+
+@media (max-width: 1599px) {
+    * {
+        --hh: 32px;
+    }
+}
+
+@media (max-width: 1279px) {
+    * {
+        --hh: 24px;
+    }
+}
+
+@media (max-width: 959px) {
+    * {
+        --hh: 80px;
+    }
+}
+
+@media (max-width: 719px) {
+    * {
+        --hh: 70px;
+    }
+}
+
+@media (max-width: 639px) {
+    * {
+        --hh: 40px;
+    }
+}
+
+.infographic-main-container {
+    display: flex;
+    flex-direction: row;
+    /* height: calc(100vh - var(--hh)); */
+    align-items: flex-start;
+}
+
+.carousel-container {
+    display: flex;
+    /* width: 100%; */
+    /* height: calc(100vh - var(--hh)); */
+    width: calc(4 / 5 * (100vh - var(--hh)));
+    /* width: 50%; */
+}
+
+.infographic-data {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    height: 100%;
+}
+
+.infographic-padding {
+    padding: 24px 48px;
+}
+
+.infographic-tag-container {
+    /* display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: flex-end; */
+}
+
+.infographic-heading {
+    cursor: default !important;
+    font-weight: 600 !important;
+    /*semibold*/
+    color: #18181b;
+}
+
+.has_bookmark_btn {
+    justify-content: flex-start;
+    padding-left: 0px;
+}
+
+.has_read_btn {
+    justify-content: flex-start;
+}
+.has_bookmark_btn img,
+.has_read_btn img {
+    height: auto;
+}
+.has_bookmark_btn img{
+    height: 27px;
+    margin-right: 10px;
+}
+
+/* read tick animation */
+
+/* @media (min-width:1500px){
+    @keyframes has_read_animation {
+        0%{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: scale(10);
+            
+        }
+        25%{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform:  scale(10);
+            }
+        50%{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform:  scale(10);        
+            }
+        75%{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: scale(10);       
+            }
+        100%{
+            transform:  scale(1);
+        }
+    }
+} */
+@media (min-width:1399px) {
+    @keyframes has_read_animation {
+        0%{
+            transform: translate(300%,-25vh) scale(10);
+        }
+        25%{
+            transform: translate(300%,-25vh) scale(10);
+        }
+        50%{
+            transform: translate(300%,-25vh) scale(10);
+        }
+        75%{
+            transform: translate(300%,-25vh) scale(10);
+        }
+        100%{
+            transform:  scale(1);
+        }
+    }
+}
+@media (min-width:1311px) and (max-width:1400px){
+    @keyframes has_read_animation {
+        0%{
+            transform: translate(200%,-25vh) scale(10);
+        }
+        25%{
+            transform: translate(200%,-25vh) scale(10);
+        }
+        50%{
+            transform: translate(200%,-25vh) scale(10);
+        }
+        75%{
+            transform: translate(200%,-25vh) scale(10);
+        }
+        100%{
+            transform:  scale(1);
+        }
+    }
+}
+@media (min-width:1281px) and (max-width:1310px){
+    @keyframes has_read_animation {
+        0%{
+            transform: translate(-50%,-25vh) scale(10);
+        }
+        25%{
+            transform: translate(-50%,-25vh) scale(10);
+        }
+        50%{
+            transform: translate(-50%,-25vh) scale(10);
+        }
+        75%{
+            transform: translate(-50%,-25vh) scale(10);
+        }
+        100%{
+            transform:  scale(1);
+        }
+    }
+}
+@media (min-width:1280px) and (max-width:1280px){
+    @keyframes has_read_animation {
+        0%{
+            transform: translate(-50%,-30vh) scale(10);
+        }
+        25%{
+            transform: translate(-50%,-30vh) scale(10);
+        }
+        50%{
+            transform: translate(-50%,-30vh) scale(10);
+        }
+        75%{
+            transform: translate(-50%,-30vh) scale(10);
+        }
+        100%{
+            transform:  scale(1);
+        }
+    }
+}
+@media (min-width:1100px) and (max-width:1279px){
+@keyframes has_read_animation {
+    0%{
+        transform: translate(300%,-30vh) scale(10);
+    }
+    25%{
+        transform: translate(300%,-30vh) scale(10);
+    }
+    50%{
+        transform: translate(300%,-30vh) scale(10);
+    }
+    75%{
+        transform: translate(300%,-30vh) scale(10);
+    }
+    100%{
+        transform:  scale(1);
+    }
+}
+}
+@media (min-width:1050px)and (max-width:1099px){
+@keyframes has_read_animation {
+    0%{
+        transform: translate(225%,-30vh) scale(10);
+    }
+    25%{
+        transform: translate(225%,-30vh) scale(10);
+    }
+    50%{
+        transform: translate(225%,-30vh) scale(10);
+    }
+    75%{
+        transform: translate(225%,-30vh) scale(10);
+    }
+    100%{
+        transform:  scale(1);
+    }
+}
+}
+@media (min-width:1025px)and (max-width:1049px){
+
+@keyframes has_read_animation {
+    0%{
+        transform: translate(200%,-30vh) scale(10);
+    }
+    25%{
+        transform: translate(200%,-30vh) scale(10);
+    }
+    50%{
+        transform: translate(200%,-30vh) scale(10);
+    }
+    75%{
+        transform: translate(200%,-30vh) scale(10);
+    }
+    100%{
+        transform:  scale(1);
+    }
+}
+}
+@media (min-width:961px)and (max-width:1024px){
+
+@keyframes has_read_animation {
+    0%{
+        transform: translate(125%,-30vh) scale(10);
+    }
+    25%{
+        transform: translate(125%,-30vh) scale(10);
+    }
+    50%{
+        transform: translate(125%,-30vh) scale(10);
+    }
+    75%{
+        transform: translate(125%,-30vh) scale(10);
+    }
+    100%{
+        transform:  scale(1);
+    }
+}
+}
+@media (min-width:870px) and (max-width:960px){
+    @keyframes has_read_animation {
+        0%{
+            transform:translate(1400%,-30vh)   scale(10);
+        }
+        25%{
+            transform:translate(1400%,-30vh)   scale(10);
+        }
+        50%{
+            transform:translate(1400%,-30vh)   scale(10);
+        }
+        75%{
+            transform:translate(1400%,-30vh)   scale(10);
+        }
+        100%{
+            transform:  scale(1);
+        }
+        
+    }
+}
+@media (min-width:760px) and (max-width:869px){
+    @keyframes has_read_animation {
+        0%{
+            transform:translate(1200%,-30vh)   scale(10);
+        }
+        25%{
+            transform:translate(1200%,-30vh)   scale(10);
+        }
+        50%{
+            transform:translate(1200%,-30vh)   scale(10);
+        }
+        75%{
+            transform:translate(1200%,-30vh)   scale(10);
+        }
+        100%{
+            transform:  scale(1);
+        }
+        
+    }
+}
+@media (min-width:720px) and (max-width:759px){
+    @keyframes has_read_animation {
+        0%{
+            transform:translate(1100%,-30vh)   scale(10);
+        }
+        25%{
+            transform:translate(1100%,-30vh)   scale(10);
+        }
+        50%{
+            transform:translate(1100%,-30vh)   scale(10);
+        }
+        75%{
+            transform:translate(1100%,-30vh)   scale(10);
+        }
+        100%{
+            transform:  scale(1);
+        }
+        
+    }
+}
+@media (min-width:670px) and (max-width:719px){
+    @keyframes has_read_animation {
+        0%{
+            transform:translate(1000%,-30vh)   scale(10);
+        }
+        25%{
+            transform:translate(1000%,-30vh)   scale(10);
+        }
+        50%{
+            transform:translate(1000%,-30vh)   scale(10);
+        }
+        75%{
+            transform:translate(1000%,-30vh)   scale(10);
+        }
+        100%{
+            transform:  scale(1);
+        }
+        
+    }
+}
+@media (min-width:639px) and (max-width:669px){
+    @keyframes has_read_animation {
+        0%{
+            transform:translate(900%,-30vh)   scale(10);
+        }
+        25%{
+            transform:translate(900%,-30vh)   scale(10);
+        }
+        50%{
+            transform:translate(900%,-30vh)   scale(10);
+        }
+        75%{
+            transform:translate(900%,-30vh)   scale(10);
+        }
+        100%{
+            transform:  scale(1);
+        }
+        
+    }
+}
+@media (min-width:540px) and (max-width:640px){
+    @keyframes has_read_animation {
+        0%{
+            transform:translate(950%,-30vh)   scale(10);
+        }
+        25%{
+            transform:translate(950%,-30vh)   scale(10);
+        }
+        50%{
+            transform:translate(950%,-30vh)   scale(10);
+        }
+        75%{
+            transform:translate(950%,-30vh)   scale(10);
+        }
+        100%{
+            transform:  scale(1);
+        }
+        
+    }
+}
+@media (min-width:500px) and (max-width:539px){
+@keyframes has_read_animation {
+    0%{
+        transform:translate(850%,-30vh)   scale(10);
+    }
+    25%{
+        transform:translate(850%,-30vh)   scale(10);
+    }
+    50%{
+        transform:translate(850%,-30vh)   scale(10);
+    }
+    75%{
+        transform:translate(850%,-30vh)   scale(10);
+    }
+    100%{
+        transform:  scale(1);
+    }
+    
+}
+}
+@media (min-width:480px) and (max-width:499px){
+    @keyframes has_read_animation {
+        0%{
+            transform:translate(800%,-30vh)   scale(10);
+        }
+        25%{
+            transform:translate(800%,-30vh)   scale(10);
+        }
+        50%{
+            transform:translate(800%,-30vh)   scale(10);
+        }
+        75%{
+            transform:translate(800%,-30vh)   scale(10);
+        }
+        100%{
+            transform:  scale(1);
+        }
+        
+    }
+    }
+    @media (min-width:455px) and (max-width:479px){
+        @keyframes has_read_animation {
+            0%{
+                transform:translate(750%,-30vh)   scale(10);
+            }
+            25%{
+                transform:translate(750%,-30vh)   scale(10);
+            }
+            50%{
+                transform:translate(750%,-30vh)   scale(10);
+            }
+            75%{
+                transform:translate(750%,-30vh)   scale(10);
+            }
+            100%{
+                transform:  scale(1);
+            }
+            
+        }
+        }
+        @media (min-width:440px) and (max-width:454px){
+            @keyframes has_read_animation {
+                0%{
+                    transform:translate(700%,-30vh)   scale(10);
+                }
+                25%{
+                    transform:translate(700%,-30vh)   scale(10);
+                }
+                50%{
+                    transform:translate(700%,-30vh)   scale(10);
+                }
+                75%{
+                    transform:translate(700%,-30vh)   scale(10);
+                }
+                100%{
+                    transform:  scale(1);
+                }
+                
+            }
+            }
+            @media (min-width:420px) and (max-width:439px){
+                @keyframes has_read_animation {
+                    0%{
+                        transform:translate(650%,-30vh)   scale(10);
+                    }
+                    25%{
+                        transform:translate(650%,-30vh)   scale(10);
+                    }
+                    50%{
+                        transform:translate(650%,-30vh)   scale(10);
+                    }
+                    75%{
+                        transform:translate(650%,-30vh)   scale(10);
+                    }
+                    100%{
+                        transform:  scale(1);
+                    }
+                    
+                }
+                }
+                @media (min-width:390px) and (max-width:419px){
+                    @keyframes has_read_animation {
+                        0%{
+                            transform:translate(600%,-30vh)   scale(10);
+                        }
+                        25%{
+                            transform:translate(600%,-30vh)   scale(10);
+                        }
+                        50%{
+                            transform:translate(600%,-30vh)   scale(10);
+                        }
+                        75%{
+                            transform:translate(600%,-30vh)   scale(10);
+                        }
+                        100%{
+                            transform:  scale(1);
+                        }
+                        
+                    }
+                    }
+                    @media (min-width:370px) and (max-width:389px){
+                        @keyframes has_read_animation {
+                            0%{
+                                transform:translate(550%,-30vh)   scale(10);
+                            }
+                            25%{
+                                transform:translate(550%,-30vh)   scale(10);
+                            }
+                            50%{
+                                transform:translate(550%,-30vh)   scale(10);
+                            }
+                            75%{
+                                transform:translate(550%,-30vh)   scale(10);
+                            }
+                            100%{
+                                transform:  scale(1);
+                            }
+                            
+                        }
+                        }
+                        @media (min-width:340px) and (max-width:369px){
+                            @keyframes has_read_animation {
+                                0%{
+                                    transform:translate(500%,-30vh)   scale(10);
+                                }
+                                25%{
+                                    transform:translate(500%,-30vh)   scale(10);
+                                }
+                                50%{
+                                    transform:translate(500%,-30vh)   scale(10);
+                                }
+                                75%{
+                                    transform:translate(500%,-30vh)   scale(10);
+                                }
+                                100%{
+                                    transform:  scale(1);
+                                }
+                                
+                            }
+                            }
+                            @media (min-width:320px) and (max-width:339px){
+                                @keyframes has_read_animation {
+                                    0%{
+                                        transform:translate(450%,-30vh)   scale(10);
+                                    }
+                                    25%{
+                                        transform:translate(450%,-30vh)   scale(10);
+                                    }
+                                    50%{
+                                        transform:translate(450%,-30vh)   scale(10);
+                                    }
+                                    75%{
+                                        transform:translate(450%,-30vh)   scale(10);
+                                    }
+                                    100%{
+                                        transform:  scale(1);
+                                    }
+                                    
+                                }
+                                }
+                                @media (min-width:310px) and (max-width:319px){
+                                    @keyframes has_read_animation {
+                                        0%{
+                                            transform:translate(400%,-30vh)   scale(10);
+                                        }
+                                        25%{
+                                            transform:translate(400%,-30vh)   scale(10);
+                                        }
+                                        50%{
+                                            transform:translate(400%,-30vh)   scale(10);
+                                        }
+                                        75%{
+                                            transform:translate(400%,-30vh)   scale(10);
+                                        }
+                                        100%{
+                                            transform:  scale(1);
+                                        }
+                                        
+                                    }
+                                    }
+                                    @media (min-width:280px) and (max-width:309px){
+                                        @keyframes has_read_animation {
+                                            0%{
+                                                transform:translate(350%,-30vh)   scale(10);
+                                            }
+                                            25%{
+                                                transform:translate(350%,-30vh)   scale(10);
+                                            }
+                                            50%{
+                                                transform:translate(350%,-30vh)   scale(10);
+                                            }
+                                            75%{
+                                                transform:translate(350%,-30vh)   scale(10);
+                                            }
+                                            100%{
+                                                transform:  scale(1);
+                                            }
+                                            
+                                        }
+                                        }
+                                        @media (min-width:250px) and (max-width:279px){
+                                            @keyframes has_read_animation {
+                                                0%{
+                                                    transform:translate(300%,-30vh)   scale(10);
+                                                }
+                                                25%{
+                                                    transform:translate(300%,-30vh)   scale(10);
+                                                }
+                                                50%{
+                                                    transform:translate(300%,-30vh)   scale(10);
+                                                }
+                                                75%{
+                                                    transform:translate(300%,-30vh)   scale(10);
+                                                }
+                                                100%{
+                                                    transform:  scale(1);
+                                                }
+                                                
+                                            }
+                                            }
+
+.readTickAnimation{
+    animation: has_read_animation 1.2s linear ;
+    /* animation: has_read_animation 1.2s linear infinite; */
+    /* position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); */
+}
+@media (min-width: 1920px) {
+    .infographic-heading {
+        font-size: 30px !important;
+    }
+
+    .infographic-description {
+        font-size: 27px !important;
+    }
+
+    .infographic-metadata {
+        font-size: 24px !important;
+    }
+
+    .has_bookmark_btn img,
+    .has_read_btn img {
+        width: 27px;
+    }
+}
+
+@media (max-width: 1919px) {
+    .infographic-heading {
+        font-size: 25px !important;
+    }
+
+    .infographic-description {
+        font-size: 22px !important;
+    }
+
+    .infographic-metadata {
+        font-size: 20px !important;
+    }
+
+    .infographic-padding {
+        padding: 16px 40px;
+    }
+    .has_bookmark_btn img,
+    .has_read_btn img {
+        width: 27px;
+    }
+}
+
+@media (max-width: 1599px) {
+    .infographic-heading {
+        font-size: 20px !important;
+    }
+
+    .infographic-description {
+        font-size: 18px !important;
+    }
+
+    .infographic-metadata {
+        font-size: 16px !important;
+    }
+
+    .infographic-padding {
+        padding: 12px 32px;
+    }
+    .has_bookmark_btn img,
+    .has_read_btn img {
+        width: 27px;
+    }
+}
+
+@media (max-width: 1279px) {
+    .infographic-heading {
+        font-size: 18px !important;
+    }
+
+    .infographic-description {
+        font-size: 16px !important;
+    }
+
+    .infographic-metadata {
+        font-size: 14px !important;
+    }
+
+    .infographic-padding {
+        padding: 8px 28px;
+    }
+    .has_bookmark_btn img,
+    .has_read_btn img {
+        width: 27px;
+    }
+}
+
+@media (max-width: 959px) {
+    .infographic-heading {
+        font-size: 32px !important;
+    }
+
+    .infographic-description {
+        font-size: 24px !important;
+    }
+
+    .infographic-metadata {
+        font-size: 20px !important;
+    }
+
+    .infographic-padding {
+        padding: 15px 30px;
+    }
+
+    .carousel-container {
+        display: flex;
+        /* padding: 20px 48px; */
+    }
+
+    .infographic-main-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .infographic-data {
+        width: 100%;
+    }
+
+    .carousel-container {
+        width: 100%;
+    }
+    .has_bookmark_btn img,
+    .has_read_btn img {
+        width: 27px;
+    }
+}
+
+@media (max-width: 719px) {
+    .infographic-heading {
+        font-size: 28px !important;
+    }
+
+    .infographic-description {
+        font-size: 20px !important;
+    }
+
+    .infographic-metadata {
+        font-size: 18px !important;
+    }
+
+    .infographic-padding {
+        padding: 10px 32px;
+    }
+    .has_bookmark_btn img,
+    .has_read_btn img {
+        width: 27px;
+    }
+}
+
+@media (max-width: 639px) {
+    .infographic-heading {
+        font-size: 18px !important;
+    }
+
+    .infographic-description {
+        font-size: 14px !important;
+    }
+
+    .infographic-metadata {
+        font-size: 12px !important;
+    }
+
+    .infographic-padding {
+        padding: 4px 16px;
+    }
+    .has_bookmark_btn img{
+        height: 24px;
+        margin-right: 10px;
+    }
+    .has_bookmark_btn img,
+    .has_read_btn img {
+        width: 24px;
+    }
+}
+

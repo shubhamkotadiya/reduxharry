@@ -1,0 +1,185 @@
+.live-quiz-title{
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #18181B;
+    font-size: 36px;
+}
+.live-quiz-heading{
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    color: #18181B;
+    font-size: 30px;
+}
+.live-quiz-subheading{
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #777777;
+    font-size: 24px;
+}
+.live-quiz-description{
+    font-family: "Source sans pro", sans-serif;
+    font-weight: 400;
+    color: #777777;
+    font-size: 27px;
+}
+.live-quiz-metadata{
+    font-family: "Source sans pro", sans-serif;
+    font-weight: 400;
+    color: #5c56d4;
+    font-size: 24px;
+}
+.live-quiz-btn-primary{
+    font-family: "Source sans pro", sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #5c56d4;
+    font-size: 24px;
+}
+.live-quiz-btn-secondary{
+    font-family: "Source sans pro", sans-serif;
+    font-weight: 600;
+    color: #5c56d4;
+    background-color: #ffffff;
+    font-size: 24px;
+}
+
+@media (max-width:1919px) {
+    .live-quiz-title{
+        font-size: 30px;
+    }
+    .live-quiz-heading{
+        font-size: 25px;
+    }
+    .live-quiz-subheading{
+        font-size: 20px;
+    }
+    .live-quiz-description{
+        font-size: 22px;
+    }
+    .live-quiz-metadata{
+        font-size: 20px;
+    }
+    .live-quiz-btn-primary{
+        font-size: 20px;
+    }
+    .live-quiz-btn-secondary{
+        font-size: 20px;
+    }
+}
+
+@media (max-width:1599px) {
+    .live-quiz-title{
+        font-size: 24px;
+    }
+    .live-quiz-heading{
+        font-size: 20px;
+    }
+    .live-quiz-subheading{
+        font-size: 16px;
+    }
+    .live-quiz-description{
+        font-size: 18px;
+    }
+    .live-quiz-metadata{
+        font-size: 16px;
+    }
+    .live-quiz-btn-primary{
+        font-size: 16px;
+    }
+    .live-quiz-btn-secondary{
+        font-size: 16px;
+    }
+}
+@media (max-width:1279px) {
+    .live-quiz-title{
+        font-size: 22px;
+    }
+    .live-quiz-heading{
+        font-size: 18px;
+    }
+    .live-quiz-subheading{
+        font-size: 14px;
+    }
+    .live-quiz-description{
+        font-size: 16px;
+    }
+    .live-quiz-metadata{
+        font-size: 14px;
+    }
+    .live-quiz-btn-primary{
+        font-size: 14px;
+    }
+    .live-quiz-btn-secondary{
+        font-size: 14px;
+    }
+}
+@media (max-width:959px) {
+    .live-quiz-title{
+        font-size: 36px;
+    }
+    .live-quiz-heading{
+        font-size: 32px;
+    }
+    .live-quiz-subheading{
+        font-size: 28px;
+    }
+    .live-quiz-description{
+        font-size: 24px;
+    }
+    .live-quiz-metadata{
+        font-size: 16px; /* Was originally 20, changed it to 16*/
+    }
+    .live-quiz-btn-primary{
+        font-size: 24px;
+    }
+    .live-quiz-btn-secondary{
+        font-size: 24px;
+    }
+}
+@media (max-width:719px) {
+    .live-quiz-title{
+        font-size: 32px;
+    }
+    .live-quiz-heading{
+        font-size: 28px;
+    }
+    .live-quiz-subheading{
+        font-size: 24px;
+    }
+    .live-quiz-description{
+        font-size: 20px;
+    }
+    .live-quiz-metadata{
+        font-size: 18px;
+    }
+    .live-quiz-btn-primary{
+        font-size: 20px;
+    }
+    .live-quiz-btn-secondary{
+        font-size: 20px;
+    }
+}
+
+@media (max-width:639px) {
+    .live-quiz-title{
+        font-size: 20px;
+    }
+    .live-quiz-heading{
+        font-size: 18px;
+    }
+    .live-quiz-subheading{
+        font-size: 14px;
+    }
+    .live-quiz-description{
+        font-size: 14px;
+    }
+    .live-quiz-metadata{
+        font-size: 12px;
+    }
+    .live-quiz-btn-primary{
+        font-size: 14px;
+    }
+    .live-quiz-btn-secondary{
+        font-size: 14px;
+    }
+}

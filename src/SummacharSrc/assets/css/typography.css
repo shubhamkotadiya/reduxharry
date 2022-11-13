@@ -1,0 +1,227 @@
+.typo-title {
+    font-size: 36px;
+    cursor: default;
+}
+.typo-headings {
+    font-size: 30px;
+    cursor: default;
+}
+.typo-live-quiz-heading {
+    font-size: 36px;
+}
+.typo-sub-headings {
+    font-size: 24px;
+    cursor: default;
+}
+.typo-Description {
+    font-size: 27px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #777777;
+}
+.typo-Description-instory-quiz {
+    font-family: "Source Sans Pro", sans-serif;
+    color: #5c56d4;
+}
+.typo-meta-data {
+    font-size: 24px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #5c56d4;
+}
+.typo-menu-secondary {
+    font-size: 18px;
+}
+.font-bold {
+    font-weight: 600 !important;
+}
+.typo-btn-primary,
+.typo-pop-up-primary {
+    font-size: 24px;
+    font-weight: 600 !important;
+    padding: 12px 48px;
+}
+.typo-pop-up-primary {
+    padding: 0px !important;
+    font-family: "Source Sans Pro", sans-serif !important;
+}
+.grid-top-padding {
+    padding-top: 16px;
+}
+@media (max-width: 1920px) {
+    .typo-title {
+        font-size: 30px;
+    }
+    .typo-headings {
+        font-size: 25px;
+    }
+    .typo-live-quiz-heading {
+        font-size: 36px;
+    }
+    .typo-sub-headings {
+        font-size: 20px;
+    }
+    .typo-Description {
+        font-size: 22px;
+    }
+    .typo-meta-data {
+        font-size: 20px;
+    }
+    .typo-menu-secondary {
+        font-size: 15px;
+    }
+    .typo-btn-primary,
+    .typo-pop-up-primary {
+        font-size: 20px;
+        padding: 12px 40px;
+    }
+}
+@media (max-width: 1600px) {
+    .typo-title {
+        font-size: 24px;
+    }
+    .typo-headings {
+        font-size: 20px;
+    }
+    .typo-live-quiz-heading {
+        font-size: 32px;
+    }
+    .typo-sub-headings {
+        font-size: 16px;
+    }
+    .typo-Description {
+        font-size: 18px;
+    }
+    .typo-meta-data {
+        font-size: 16px;
+    }
+    .typo-menu-secondary {
+        font-size: 12px;
+    }
+    .typo-btn-primary,
+    .typo-pop-up-primary {
+        font-size: 16px;
+        padding: 8px 32px;
+    }
+}
+@media (max-width: 1280px) {
+    .typo-title {
+        font-size: 22px;
+    }
+    .typo-headings {
+        font-size: 18px;
+    }
+    .typo-sub-headings {
+        font-size: 14px;
+    }
+    .typo-live-quiz-heading {
+        font-size: 32px;
+    }
+    .typo-Description {
+        font-size: 16px;
+    }
+    .typo-meta-data {
+        font-size: 14px;
+    }
+    .typo-menu-secondary {
+        font-size: 12px;
+    }
+    .typo-btn-primary,
+    .typo-pop-up-primary {
+        font-size: 14px;
+        padding: 8px 24px;
+    }
+}
+@media (max-width: 960px) {
+    .typo-title {
+        font-size: 36px;
+    }
+    .typo-headings {
+        font-size: 32px;
+    }
+    .typo-sub-headings {
+        font-size: 28px;
+    }
+    .typo-Description {
+        font-size: 24px;
+    }
+    .typo-meta-data {
+        font-size: 20px;
+    }
+    .typo-live-quiz-heading {
+        font-size: 28px;
+    }
+    .typo-menu-secondary {
+        font-size: 20px;
+    }
+    .typo-btn-primary,
+    .typo-pop-up-primary {
+        font-size: 24px;
+        padding: 8px 16px;
+    }
+}
+@media (max-width: 720px) {
+    .typo-title {
+        font-size: 32px;
+    }
+    .typo-headings {
+        font-size: 28px;
+    }
+    .typo-sub-headings {
+        font-size: 24px;
+    }
+    .typo-Description {
+        font-size: 20px;
+    }
+    .typo-meta-data {
+        font-size: 18px;
+    }
+    .typo-live-quiz-heading {
+        font-size: 24px;
+    }
+    .typo-menu-secondary {
+        font-size: 18px;
+    }
+    .typo-btn-primary,
+    .typo-pop-up-primary {
+        font-size: 20px;
+        padding: 8px 16px;
+    }
+}
+@media (max-width: 650px) {
+    .grid-top-padding {
+        padding-top: 8px;
+    }
+}
+@media (max-width: 640px) {
+    .typo-title {
+        font-size: 20px;
+    }
+    .typo-headings {
+        font-size: 18px;
+    }
+    .typo-sub-headings {
+        font-size: 14px;
+    }
+    .typo-Description {
+        font-size: 14px;
+    }
+    .typo-meta-data {
+        font-size: 12px;
+    }
+    .typo-live-quiz-heading {
+        font-size: 12px;
+    }
+    .typo-menu-secondary {
+        font-size: 12px;
+    }
+    .typo-btn-primary,
+    .typo-pop-up-primary {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 420px) {
+    .typo-title {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,483 @@
+.profile-view {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+.profile-view .heading {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    box-sizing: border-box;
+}
+.profile-view .heading h3 {
+    padding: 3px 0px;
+    display: flex;
+    color: #777777;
+    font-size: 16px;
+    font-weight: 500;
+}
+.profile-view .profile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.profile-view .profile img {
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    box-sizing: border-box;
+}
+.profile-view .profile-name {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.profile-view .profile-name a {
+    color: black;
+    font-size: 18px;
+}
+.profile-view .profile-name svg {
+    margin: 5px 5px 5px 10px !important;
+    height: 15px;
+    width: 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.profile-view .form {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding:0px 32px;
+}
+@media (max-width: 960px) {
+    .profile-view .form {
+        width: 85%;
+    }
+}
+
+.profile-view .form .form-field {
+    display: flex;
+    /* flex: 1; */
+    min-width: 40%;
+    width: 47.5%;
+    margin: 20px 0px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.form-field:focus-within .title label {
+    color: #5c56d4 !important;
+}
+.form-field:focus-within input {
+    border-bottom: 1px solid #5c56d4 !important;
+}
+.form-field:focus-within svg path {
+    fill: #5c56d4 !important;
+}
+.no-underline input {
+    border-bottom: none !important;
+}
+.css-1480iag-MuiInputBase-root-MuiInput-root:before {
+    border-bottom: 1px solid rgb(184, 184, 185) !important;
+}
+.css-1480iag-MuiInputBase-root-MuiInput-root.Mui-error:after {
+    border-bottom: none;
+}
+
+.profile-view .form .row-start {
+    /* min-width: 640px;
+        width: 640px; */
+}
+
+.profile-view .form .form-field .title {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 0px !important;
+    margin-bottom: 0px;
+}
+.profile-view .form .form-field .title label {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #b8b8b9;
+}
+.profile-view .form .form-field .title svg {
+    height: 15px;
+    display: flex;
+    width: 15px;
+    margin: 5px;
+    justify-self: flex-end;
+    cursor: pointer;
+}
+.profile-view .form .form-field .title span {
+    color: red;
+    margin-left: 5px;
+    display: flex;
+}
+.profile-view .form .form-field input {
+    height: 32px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    outline: 0px;
+    border: none;
+    border-bottom: 1px solid #b8b8b9;
+    padding: 0px 0px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.profile-view .form .btn {
+    display: flex;
+    width: 100%;
+    margin: 20px 0px !important;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+}
+.profile-view .form .btn button {
+    width: 150px;
+    height: 40px;
+    align-items: center;
+    padding: 0px 16px;
+    text-align: center;
+    background: #e7e6f9;
+    border: 1px solid #777777;
+    box-sizing: border-box;
+    border-radius: 1000px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 20px;
+}
+
+.profile-view .form a {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    color: #777777;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.profile-view .form .btn .submit {
+    background: #5c56d4;
+    border: 1px solid #5c56d4;
+    border-radius: 1000px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+    color: #fafaff;
+}
+
+.profile-view .form .btn .cancel {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #777777;
+}
+.std {
+    margin-left: 2px;
+}
+
+.popUpGrayArea {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pop_up_container_profile {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 8;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popupInput {
+    width: 70px;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.grayArea {
+    background: #0c0a29;
+    opacity: 0.4;
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+}
+
+.popUpGrayArea .popUpBox {
+    width: 353px;
+    height: 342px;
+    position: relative;
+    background-color: white;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    animation: popIn 0.3s linear;
+}
+
+.grayArea_profile {
+    background-color: transparent;
+
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+}
+
+.popupInput {
+    border: 1px solid black;
+}
+
+.popUpGrayArea .popUpBox .content-area {
+    display: flex;
+    flex: 1;
+    box-sizing: border-box;
+    /*  overflow-y: scroll;*/
+    /* box-shadow: -2px 0px 8px rgba(12, 10, 41, 0.1); */
+    border-radius: 0px 16px 16px 0px;
+    padding: 16px !important;
+    flex-direction: column;
+}
+
+.cross-img {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.top-area {
+    display: flex;
+    justify-content: center;
+}
+.top-area img {
+    width: 141px;
+    height: 141px;
+}
+
+.writing {
+    text-align: center;
+    margin-top: 32px;
+}
+
+.school-name svg {
+    margin-right: 5px;
+}
+
+.relative {
+    position: relative;
+}
+
+.profile-drop {
+    position: absolute;
+    color: black;
+    margin-top: 53px;
+    z-index: 10;
+    padding: 10px 0px;
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: -2px -2px 6px rgba(12, 10, 41, 0.1), 2px 2px 6px rgba(12, 10, 41, 0.1);
+    max-height: 100px;
+    overflow-y: scroll;
+}
+
+.profile-drop-list {
+    padding: 5px;
+}
+@media (min-width: 960px) {
+.profile-drop-list:hover {
+    background-color: #5c56d4;
+    color: white;
+    }}
+
+.profile-dow-ar {
+    position: absolute;
+    right: 10px;
+    bottom: 11px;
+    background-color: white;
+}
+
+.profile-view .form .form-field input.readOnly {
+    color: #b8b8b9;
+}
+
+.doubts_input input, .doubts_input textarea {
+    cursor: pointer;
+}
+
+.save_disabled {
+    cursor: not-allowed;
+    background-color: #b8b8b9;
+}
+@media (min-width: 960px) {
+    .save_disabled:hover {
+        background-color: #b8b8b9;
+        border: none;
+    }}
+
+
+@media (max-width: 980px) {
+    .profile-view .heading {
+        justify-content: flex-start;
+    }
+
+    .profile-view .form .form-field {
+        min-width: 100%;
+        width: 100%;
+        margin: 12px 0px;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .profile-view .form .row-start {
+        min-width: 100%;
+        width: 100%;
+    }
+
+    .profile-view .form .form-field input {
+        padding: 0px 0px;
+    }
+
+    .profile-view .form .form-field .title {
+        padding-left: 0px !important;
+        margin-bottom: 0px;
+        margin: 0px;
+    }
+
+    .profile-view .form .form-field .title label {
+        font-size: 12px;
+    }
+    .profile-view .form .form-field input {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 520px) {
+    .profile_btns {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+    @media (max-width: 501px) {
+        .profile-dow-ar {
+            position: absolute;
+            right: 2px;
+            bottom: 13px;
+            background-color: white;
+        }
+
+       
+    }
+
+    @media (max-width:480px) {
+        .profile-view {
+            margin: 0 16px;
+        }
+    }
+
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+
+    .profile-view .tooltip .tooltiptext {
+        background-color: #ecc249;
+        color: black;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 5px;
+        position: absolute;
+        z-index: 1;
+        left: 10%;
+        margin-left: -10px;
+        margin-top: 2px;
+        box-shadow: 2px 2px 6px rgb(12 10 41 / 5%), -2px -2px 6px rgb(12 10 41 / 5%);
+    }
+
+        .profile-view .tooltip .tooltiptext::before {
+            content: " ";
+            position: absolute;
+            top: -65%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 15px;
+            border-style: solid;
+            border-color: transparent transparent #ecc249 transparent;
+        }
+
+
+
+    @media (max-width: 600px) {
+        .profile-view .form {
+            padding: 0px 16px;
+        }
+    }
+
+    .form-field.gray-field:focus-within .title label {
+        color: #b8b8b9 !important;
+    }
+
+    .form-field.gray-field:focus-within input {
+        border-bottom: 1px solid #b8b8b9 !important;
+    }
+
+    .form-field.gray-field:focus-within svg path {
+        fill: #b8b8b9 !important;
+    }
+
+
+@media(min-width:1280px) {
+    .profile-view .form input:hover {
+        cursor: text;
+    }
+
+    .profile-view .form input.readOnly:hover {
+        cursor: default
+    }
+}

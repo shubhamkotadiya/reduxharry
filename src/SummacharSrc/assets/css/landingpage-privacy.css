@@ -1,0 +1,63 @@
+/* *{
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+    scroll-behavior: none !important;
+} */
+.privacy-container{
+    width: 100%;
+    margin-top: 70px;
+    display: grid;
+    place-items: center;
+}
+.privacy-logo{
+    position: sticky;
+    top: 70px;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    background-color: white;
+}
+.privacy-main-container{
+    width: 95%;
+    max-width: 700px;
+    margin-bottom: 10px;
+    padding: 32px;
+    margin-top: 20px;
+    
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px #777777;
+}
+.privacy-link{
+    display: inline !important;
+    color: #5c56d4;
+    text-decoration: underline;
+}
+.privacy-main-title{
+    align-items: flex-start;
+    border-radius: 10px;
+    font-size: 32px;
+    width: 100%;
+    margin: 25px 0px;
+}
+.privacy-title{
+    width: 100%;
+    align-items: flex-start;
+    font-size: 24px;
+    margin: 10px 0px;
+    color: #000;
+}
+.privacy-content{
+    width: 100%;
+    padding-left: 15px;
+    align-items: flex-start;
+    font-size: 18px;
+    margin: 15px 0px;
+
+    color: #777777;
+}

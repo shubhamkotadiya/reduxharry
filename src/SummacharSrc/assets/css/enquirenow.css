@@ -1,0 +1,62 @@
+
+.shimmer{
+    overflow: hidden ;
+    position: relative !important;
+}
+.shimmer::before {
+    content: '';
+    position: absolute;
+    height: 100px;
+    width: 40px;
+    top: -30px;
+    /* background-image: linear-gradient(rgba(207, 207, 57, 0.9),rgba(255, 255, 255, 0.9)); */
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.2),rgba(255, 255, 255, 0.3),rgba(255, 255, 255, 0.3),rgba(255, 255, 255, 1),rgba(255, 255, 255, 0.3),rgba(255, 255, 255, 0.3),rgba(255, 255, 255, 0.2));
+    filter: blur(3px);
+    animation: shimmeranim 3s infinite linear;
+    
+}
+
+@keyframes shimmeranim {
+    0%{
+        transform: rotate(20deg) translateX(-110px);
+    }
+    2%{
+        transform: rotate(20deg) translateX(-80px);
+    }
+    4%{
+        transform: rotate(20deg) translateX(-60px);
+    }
+    6%{
+        transform: rotate(20deg) translateX(-40px);
+    }
+    8%{
+        transform: rotate(20deg) translateX(-20px);
+    }
+    10%{
+        transform: rotate(20deg) translateX(0px);
+    }
+    12%{
+        transform: rotate(20deg) translateX(20px);
+    }
+    14%{
+        transform: rotate(20deg) translateX(40px);
+    }
+    16%{
+        transform: rotate(20deg) translateX(60px);
+    }
+    18%{
+        transform: rotate(20deg) translateX(80px);
+    }
+    20%{
+        transform: rotate(20deg) translateX(110px);
+    }
+    100%{
+        transform: rotate(20deg) translateX(110px);
+    }
+}
+
+
+
+
+
+

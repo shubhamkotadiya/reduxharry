@@ -1,0 +1,154 @@
+.app-profile-container {
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: center;
+}
+.app-profile-container .profile-inner-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0px !important;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+.app-profile-container .profile-inner-container h1 {
+    /* font-size: 24px; */
+    font-weight: 500;
+    box-sizing: border-box;
+    /* margin: 0px 0px 0px 10px !important; */
+}
+.app-profile-container .profile-inner-container .nav-bar {
+    min-width: 100%;
+    display: flex;
+    justify-content: stretch;
+    flex: 1;
+    padding: 0px;
+    margin-top: 8px;
+    margin-left: 32px;
+    box-sizing: border-box;
+    padding-bottom: 24px;
+    /* border-bottom: 1px solid #777777; */
+}
+.app-profile-container .profile-inner-container .nav-bar ul {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: left; */
+    margin: 0px !important;
+    padding: 0px !important;
+    list-style-type: none;
+    box-sizing: border-box;
+    width: 40vh;
+}
+.app-profile-container .profile-inner-container .nav-bar ul a {
+    cursor: pointer;
+    display: flex;
+    /* width: 100px; */
+    justify-content: center;
+    margin-right: 16px;
+    color: #787e95;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 4px 8px !important;
+    text-decoration: none;
+    border-radius: 6px;
+    /* transition: border 0.05s linear; */
+    box-sizing: border-box;
+}
+.is-active {
+    /* transition: border 0.05s linear; */
+    color: #5c56d4 !important;
+    border-bottom: 2px solid #5c56d4;
+}
+.app-profile-container .profile-inner-container .body {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inner-personal-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.logout-dialog-box {
+    min-height: 300px;
+    max-width: 600px;
+}
+
+@media (max-width: 1599px) {
+    .logout-dialog-box {
+        min-height: 200px;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 600px) {
+    .app-profile-container .profile-inner-container .nav-bar {
+        margin-top: 0px;
+        margin-left: 16px;
+    }
+
+    .inner-personal-container {
+        width: 100%;
+    }
+
+    .app-profile-container .profile-inner-container {
+        padding: 10px 0px ;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
+
+    nav.nav-bar {
+        overflow-x: hidden;
+        padding: 0px;
+    }
+
+    .nav-bar::-webkit-scrollbar-track {
+        height: 5px;
+        width: auto;
+        background-color: transparent;
+    }
+    .nav-bar::-webkit-scrollbar-thumb {
+        height: 5px;
+        width: auto;
+        background-color: transparent;
+    }
+    .app-profile-container .profile-inner-container .nav-bar ul a {
+        padding: 2px 4px !important;
+        cursor: pointer;
+        justify-content: center;
+        display: flex;
+        width: auto;
+        margin-right: 8px;
+        color: #787e95;
+        font-size: 13px;
+        text-decoration: none;
+        /* transition: border 0.05s linear; */
+        box-sizing: border-box;
+    }
+}
+
+.nav-bar ul a.active {
+    color: #5c56d4 !important;
+    background-color: #e7e6f9;
+    /* border-bottom: 2px solid #5c56d4; */
+}
+/* @media (max-width: 700px){
+    .app-profile-container .profile-inner-container .nav-bar ul {
+        justify-content:left;
+        width: 50%;
+    }
+} */
+
+@media (max-width: 480px) {
+    .app-profile-container .profile-inner-container .nav-bar {
+        padding-bottom: 16px;
+        margin-left: 16px;
+    }
+}

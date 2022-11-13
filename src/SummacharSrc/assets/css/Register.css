@@ -1,0 +1,437 @@
+.signin_container>* {
+    box-sizing: border-box;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    
+    color: #18181B;
+}
+.sign-in-bg{
+    position: fixed;
+    top: 0px;
+    height: 100vh;
+    width: 100%;
+    left:0px;
+    
+    z-index: -1;
+    
+}
+
+.otp_title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 140%;
+    margin-top: 20px;
+    color: #131319;
+}
+
+.no-otp {
+    /* font-weight: 500; */
+    /* font-size: 16px; */
+    /* line-height: 22px; */
+    color: #777777;
+}
+
+.no-otp span {
+    color: #5C56D4;
+}
+
+.dropdown {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+.dropdown:focus-within{    
+    border: 1px solid #5C56D4 !important;
+}
+.showMore {
+    padding-right: 10px;
+}
+
+.drop_list {
+    width: 100%;
+    background: #FFFFFF;
+    /* #4 Medium Grey */
+    max-height: 200px;
+    border: 0.782609px solid #B8B8B9;
+    box-sizing: border-box;
+    box-shadow: 4px 4px 16px rgba(19, 19, 25, 0.15);
+    border-radius: 16px;
+    z-index: 100;
+    position: absolute;
+    padding: 15px 0px;
+    box-sizing: border-box;
+    top: 50px;
+}
+
+.drop_list_inner {
+    flex-direction: column;
+    overflow-y: scroll;
+    display: flex;
+    flex: 1;
+    width: 100%;
+}
+
+/* .drop_list::-webkit-scrollbar-track{
+    background-color:transparent !important
+} */
+
+.drop-item {
+    padding: 5px 24px;
+    cursor: pointer;
+    color: #000;
+}
+
+
+
+.drop_list input {
+    flex: 1;
+    border: 1px solid gray;
+    padding: 5px;
+    margin: 10px 0px;
+    padding: 8px 5px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.drop_list .add_btn {
+    height: 40px;
+    width: 40px;
+}
+
+.drop_list input:focus {
+    outline: 0px
+}
+
+.register_disabled {
+    cursor: not-allowed;
+    background-color: #E5E5E5;
+    color: #B8B8B9;
+    border: 2px solid transparent !important;
+}
+.register_disabled:hover {
+    cursor: not-allowed;
+    background-color: #E5E5E5;
+    color: #B8B8B9;
+    border: 2px solid transparent !important;
+}
+
+.otp_sent {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    color: #777777;
+    margin-bottom: 10px;
+}
+
+.signin_container {
+    background-color: #E5E5E5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   /* background: url('../images/auth/signup_bg.svg');*/
+    /* background-position: 0%; */
+    /* background-size: 100% 100%; */
+    background-size: cover;
+    background-clip: border-box;
+    justify-content: center;
+    height: 100vh;
+}
+
+.inner_signin_container {
+    width: 100%;
+    max-width: 720px;
+    min-height: 600px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-between; */
+    background: #FFFFFF;
+    /* Signup purple shadow card */
+    border: 1px solid lightgray;
+    box-shadow: -20px -20px 60px rgba(217, 216, 235, 0.2), 20px 20px 60px rgba(217, 216, 235, 0.2);
+    border-radius: 16px;
+    padding: 32px 80px;
+    scrollbar-width: 0px;
+}
+.inner_signin_container::-webkit-scrollbar{
+    display: none;
+}
+
+
+.inner_signin_container input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inner_signin_container input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.inner_signin_container input:-webkit-autofill,
+.inner_signin_container input:-webkit-autofill:focus, 
+.inner_signin_container input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+.signin_title {
+    font-size: 32px;
+    line-height: 22px;
+}
+
+.signin_process {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.details_grid {
+    display: grid;
+    grid-gap: 30px;
+    width: 100%;
+}
+
+.popUpGrayArea {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.popupInput {
+    width: 70px;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.grayArea {
+    background-color: transparent !important;
+    opacity: 0.4;
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+}
+
+.popUpGrayArea .popUpBox {
+    width: 600px;
+    height: 342px;
+    position: relative;
+    background-color: white;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    animation: popIn .3s linear;
+    padding: 37px 24px 40px 24px;
+    align-items: center;
+}
+
+.popupInput {
+    border: 1px solid black;
+}
+
+.popUpGrayArea .popUpBox .content-area {
+    display: flex;
+    box-sizing: border-box;
+    /*  overflow-y: scroll;*/
+    /* box-shadow: -2px 0px 8px rgba(12, 10, 41, 0.1); */
+    border-radius: 0px 16px 16px 0px;
+    flex-direction: column;
+    text-align: center;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 140%;
+    /* or 34px */
+    text-align: center;
+    /* #3 Dark Grey */
+    color: #777777;
+    box-sizing: border-box;
+}
+
+.after_sign_in {
+    width: 50%;
+    flex-direction: column;
+    flex: 1;
+}
+
+.after_sign_in .img_box {
+    width: 90%;
+    background-color: #FCF6E3;
+    width: 200px;
+    height: 200px;
+    border-radius: 16px;
+    margin: 5px 0px 30px;
+}
+
+.after_sign_in:nth-child(2) .img_box{
+    background-color: #E0F7FF;
+    
+}
+
+.after_sign_in .img_box img{
+    max-width: 85%;
+    max-height: 85%;
+}
+
+.after_sign_in span{
+    color: #777777 !important;
+}
+
+.resend-btn{
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 400;
+    color: #777777;
+    font-size: 18px;
+}
+.title-heading-sign-in{
+    font-size: 36px;
+}
+
+@media(max-width:1920px) {
+    .title-heading-sign-in{
+        font-size: 30px;
+    }
+    .resend-btn{
+        font-size: 18px;
+    }
+}
+@media(max-width:1600px) {
+    .title-heading-sign-in{
+        font-size: 24px;
+    }
+    .resend-btn{
+        font-size: 15px;
+    }
+}
+
+@media(max-width:1280px) {
+    .title-heading-sign-in{
+        font-size: 22px;
+    }
+    .resend-btn{
+        font-size: 12px;
+    }
+}
+
+@media(max-width:960px) {
+    .title-heading-sign-in{
+        font-size: 36px;
+    }
+    .sign-in-bg{
+        display: none;
+    }
+    .resend-btn{
+        font-size: 12px;
+    }
+}
+
+
+@media(max-width:720px) {
+    .signin_process .btn{
+        height:50px !important;
+    }
+
+    .inner_signin_container .mb-20 {
+        margin-bottom: 20px !important;
+    }
+    .title-heading-sign-in {
+        font-size: 32px;
+    }
+    .signin_container, .inner_signin_container {
+        /* background-color: transparent; */
+        box-shadow: none;
+        border: none;
+    }
+    .signin_container{
+        background: transparent !important;
+    }  
+    .resend-btn{
+        font-size: 20px;
+    }
+}
+
+@media(max-width:640px) {
+    .title-heading-sign-in{
+        font-size: 20px;
+    }
+    .resend-btn{
+        font-size: 18px;
+    }
+}
+
+@media(max-width:480px) {
+    .signin_container, .inner_signin_container {
+    
+        justify-content: flex-start;
+    }
+    .inner_signin_container {
+        /* width: auto; */
+        width: 100%;
+        padding: 32px 10px;
+        width: 100%;
+    }
+    .after_sign_in {
+        width: 100%;
+        flex: 1;
+        margin: 20px 0px;
+    }
+    .resend-btn{
+        font-size: 12px;
+    }
+}
+
+@media(max-width:320px) {
+    .resend-btn{
+        font-size: 12px;
+    }
+}
+
+@media(min-width:1279px) {
+    @media (min-width: 960px) {
+    .drop-item:hover {
+        background-color: #5C56D4;
+        color: white;
+    }
+    .inner_signin_container input:-webkit-autofill:hover {
+        -webkit-box-shadow: 0 0 0 30px white inset !important;
+    }
+    .after_sign_in:nth-child(2):hover .img_box {
+        background-color: #ADEBFF;
+        transform: scale(1.1);
+    }
+
+    .after_sign_in:hover .img_box {
+        background-color: #F7E6B5;
+        transform: scale(1.1);
+    }}
+}
