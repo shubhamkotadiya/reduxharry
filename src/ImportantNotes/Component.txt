@@ -1,0 +1,120 @@
+Dropdown MUI
+
+import React, { createContext, useContext, useState } from "react";
+import { ListSubheader, MenuItem, Select } from "@mui/material";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+ 
+import styles from "./Dropdown.module.css";
+import { forwardRef } from "react";
+import { Box } from "../../Components";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import { SearchIcon } from "Assets/Icons";
+import { isFunc } from "Product/AdminPanel/Dashboard/utils";
+ 
+const ctx = createContext();
+ 
+const DropdownItem = ({ children, ...rest }) => {
+  const { size } = useContext(ctx);
+ 
+  return (
+    <MenuItem
+      className={`${size === "small" ? styles["small-menu-item"] : ""}`}
+      {...rest}
+    >
+      {children}
+    </MenuItem>
+  );
+};
+ 
+export const Dropdown = forwardRef(
+  (
+    {
+      // required
+      children,
+      // optional
+      size = "medium", // small, medium
+      fullWidth = true,
+      outlined = true,
+      className = "",
+      backgroundColor: bgColor = "var(--white-color)",
+      inValid = false,
+      valid = false,
+      label,
+      helperText,
+      renderValue,
+      ...rest
+    },
+    ref
+  ) => {
+    const backgroundColor = outlined ? bgColor : "var(--gray-bk-color)";
+ 
+    const inValidClassName = inValid ? styles.error : "";
+    const validClassName = valid ? styles.success : "";
+ 
+    return (
+      <Box
+        className={`${styles.wrapper} ${inValidClassName} ${validClassName} ${className} ${styles["gs-simple-dropdown"]}`}
+      >
+        {label && <label className={styles.label}>{label}</label>}
+        <ctx.Provider value={{ size }}>
+          <Select
+            ref={ref}
+            variant="outlined"
+            size={size}
+            fullWidth={fullWidth}
+            style={{
+              backgroundColor,
+            }}
+            className={styles["gs-dropdown-select"]}
+            classes={{
+              select: styles.select,
+              icon: styles.icon,
+            }}
+            IconComponent={KeyboardArrowDownIcon}
+            MenuProps={{
+              className: styles["gs-dropdown-popover-menu"],
+            }}
+            {...rest}
+          >
+            {children}
+          </Select>
+        </ctx.Provider>
+        {!!helperText && (
+          <div className={styles["helper-text"]}>
+            <InfoOutlinedIcon />
+            <p>{helperText}</p>
+          </div>
+        )}
+      </Box>
+    );
+  }
+);
+ 
+export const SearchableDropdown = forwardRef((props, ref) => {
+  const [search, setSearch] = useState("");
+ 
+  if (!isFunc(props.children)) throw Error("Children has to be a function.");
+ 
+  const handleChange = (e) => setSearch(e.target.value);
+ 
+  return (
+    <Dropdown {...props} ref={ref}>
+      <ListSubheader>
+        <div className={styles["gs-dropdown-search-input"]}>
+          <SearchIcon width={"14px"} />
+          <input
+            onChange={handleChange}
+            value={search}
+            placeholder={props.searchInputPlaceholder}
+            onKeyDown={(e) => e.stopPropagation()}
+          />
+        </div>
+      </ListSubheader>
+      {props.children({ search })}
+    </Dropdown>
+  );
+});
+ 
+Dropdown.Item = DropdownItem;
+
+

@@ -1,0 +1,1490 @@
+App.js - >
+
+import * as React from "react";
+import Product from "./Routes/Product";
+import { useProduct } from "./Product/Hooks/useProduct";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+
+import { LicenseInfo } from "@mui/x-license-pro";
+
+
+import "./Assets/Styles/Common.css";
+import "./App.css";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "ApolloClient";
+import { AuthProvider } from "Product/Hooks/Authentication/UseLogin";
+import { BrowserRouter as Router } from "react-router-dom";
+
+
+export const ProductContext = React.createContext();
+const queryClient = new QueryClient();
+
+
+LicenseInfo.setLicenseKey(
+  "178e96d540442d994dd5c0765feecd8bTz01NTM5NSxFPTE3MDE1MTQ3NjM2NTQsUz1wcm8sTE09c3Vic2NyaXB0aW9uLEtWPTI="
+);
+
+
+export default function App() {
+  const { value } = useProduct();
+
+
+  return (
+    <Router>
+      <ApolloProvider client={client}>
+        <QueryClientProvider client={queryClient}>
+          <AuthProvider>
+            <ProductContext.Provider value={value}>
+              <Product />
+            </ProductContext.Provider>
+          </AuthProvider>
+        </QueryClientProvider>
+      </ApolloProvider>
+    </Router>
+  );
+}
+
+
+
+
+Product.js 
+
+import { ProductContext } from "App";
+import React, { Suspense } from "react";
+import { useContext } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { ButtonLoader, Toast } from "../Components";
+import routesConfig from "./RoutesConfig";
+import ReactLoading from "react-loading";
+import { StyleGuide } from "./StyleGuide";
+import { useLogin } from "Product/Hooks";
+
+
+//---------------------------- ROUTE FUNCTIONS ------------------------------------
+
+
+const Common = (route) => (
+  <Suspense
+    fallback={
+      <ReactLoading
+        className="gs-enable-disable-loader-bubble"
+        type={"circles"}
+        color={"green"}
+      />
+    }
+  >
+    <route.component />
+  </Suspense>
+);
+
+
+const Public = (route) => {
+  const { isAuth } = useLogin();
+
+
+  if (isAuth) return <Navigate to="/" replace />;
+
+
+  // Logic for public routes
+
+
+  // const { user } = useAuth();
+
+
+  // const redirectTo = "/";
+
+
+  // if (!!user) return <Navigate to={redirectTo} replace />;
+
+
+  return (
+    <Suspense
+      fallback={
+        <ReactLoading
+          className="gs-enable-disable-loader-bubble"
+          type={"circles"}
+          color={"var(--primary-color)"}
+        />
+      }
+    >
+      <route.component />
+    </Suspense>
+  );
+};
+
+
+const Private = (route) => {
+  const { isAuth } = useLogin();
+
+
+  if (!isAuth) return <Navigate to="/login" replace />;
+
+
+  // Logic for Private routes
+
+
+  const { component: Component } = route;
+
+
+  //   const currentUserRole = user.role;
+
+
+  //   if (!!permissions?.length && !permissions.includes(currentUserRole))
+  //     return <Navigate to={"/unauthorized"} replace />;
+
+
+  return (
+    <Suspense
+      fallback={
+        <ReactLoading
+          className="gs-enable-disable-loader-bubble"
+          type={"circles"}
+          color={"var(--primary-color)"}
+        />
+      }
+    >
+      <Component />
+    </Suspense>
+  );
+};
+
+
+const createNestedRoutes = (routes, RouteType) => {
+  return routes.map((route, i) => {
+    if (!route.component) {
+      throw new Error("Component must be required....");
+    }
+    if (route.children) {
+      return (
+        <Route
+          path={route.path}
+          key={i}
+          element={<RouteType component={route.component} />}
+        >
+          {createNestedRoutes(route.children, RouteType)}
+        </Route>
+      );
+    } else {
+      return (
+        <Route
+          key={i}
+          index={route.index}
+          path={route.path}
+          element={<RouteType component={route.component} />}
+        />
+      );
+    }
+  });
+};
+
+
+const Product = () => {
+  const { isAppLoading } = useLogin();
+  const { notification, setNotification } = useContext(ProductContext);
+  const { public: publicRoutes, common, private: privateRoutes } = routesConfig;
+
+
+  if (isAppLoading)
+    return (
+      <>
+        <div
+          className="gs-main"
+          style={{ justifyContent: "center", alignItems: "center" }}
+        >
+          <ButtonLoader color={"var(--primary-color)"} />
+        </div>
+      </>
+    );
+
+
+  return (
+    <>
+      <div className="gs-main">
+        <Routes>
+          {createNestedRoutes(privateRoutes, Private)}
+          {createNestedRoutes(common, Common)}
+          {createNestedRoutes(publicRoutes, Public)}
+
+
+          {StyleGuide}
+        </Routes>
+        {notification.visible && (
+          <Toast
+            type={notification.type}
+            open={notification.visible}
+            onClose={(e) => {
+              setNotification({
+                visible: false,
+                message: "",
+                type: "success",
+              });
+            }}
+          >
+            {notification.message}
+          </Toast>
+        )}
+      </div>
+    </>
+  );
+};
+
+
+export default Product;
+
+
+
+
+RoutesConfig.js
+
+import { Navigate, Outlet } from "react-router-dom";
+
+
+import {
+  //---------------------------------------------- Authentication-------------------------------
+  Login,
+  Registration,
+  ForgotPassword,
+  OtpLogin,
+  TwoFAVerification,
+  ResetPassword,
+  RegisterEmailVerify,
+  OtpConformation,
+  //---------------------------------------------- private routes-------------------------------
+  Dashboard,
+  TrackingCode,
+  Security,
+  CompanyDetails,
+  UserProfile,
+  NPSDashboard,
+  ProductTourDashboard,
+  CheckListDashboard,
+  HotspotsDashboard,
+  EventsDashboard,
+  UsersDashboard,
+  ManageDomain,
+  Goal,
+  Team,
+  Notification,
+  Billing,
+  LocalVariables,
+  Theme,
+  RolePermission,
+  AddRolePermission,
+  Nps,
+} from "../Product";
+import Layout from "./Layout";
+
+
+const routesConfig = {
+  common: [
+    {
+      path: "unauthorized",
+      component: () => <div>unauthorized </div>,
+    },
+    { path: "*", component: () => <div>Not Found!</div> },
+  ],
+  private: [
+    // {
+    //   index: true,
+    //   component: Dashboard,
+    // },
+    {
+      //   path: "home",?
+      path: "/",
+      component: Layout,
+      children: [
+        {
+          index: true,
+          component: () => <Navigate to="/dashboard" replace={true} />,
+        },
+        {
+          path: "dashboard",
+          component: Dashboard,
+        },
+        {
+          path: "product-tour",
+          component: ProductTourDashboard,
+        },
+        {
+          path: "nps",
+          component: Nps,
+        },
+        // {
+        //   path: "nps",
+        //   component: NPSDashboard,
+        // },
+        {
+          path: "checklist",
+          component: CheckListDashboard,
+        },
+        {
+          path: "hotspots",
+          component: HotspotsDashboard,
+        },
+        {
+          path: "report",
+          component: EventsDashboard,
+        },
+        {
+          path: "users",
+          component: UsersDashboard,
+        },
+        {
+          path: "themes",
+          component: Theme,
+        },
+        {
+          path: "settings",
+          component: Outlet,
+          children: [
+            {
+              index: true,
+              component: UserProfile,
+            },
+            {
+              path: "profile",
+              component: UserProfile,
+            },
+            {
+              path: "security",
+              component: Security,
+            },
+            {
+              path: "tracking-code",
+              component: TrackingCode,
+            },
+            {
+              path: "goals",
+              component: Goal,
+            },
+            {
+              path: "team",
+              component: Team,
+            },
+            {
+              path: "notification",
+              component: Notification,
+            },
+            {
+              path: "company-details",
+              component: CompanyDetails,
+            },
+            {
+              path: "manage-domain",
+              component: ManageDomain,
+            },
+            {
+              path: "billing",
+              component: Billing,
+            },
+            {
+              path: "role-permission",
+
+
+              component: Outlet,
+              children: [
+                {
+                  index: true,
+                  component: RolePermission,
+                },
+                { path: "create-new", component: AddRolePermission },
+                { path: "edit", component: AddRolePermission },
+              ],
+            },
+          ],
+        },
+        {
+          path: "admin",
+          component: Outlet,
+          children: [
+            {
+              index: true,
+              component: () => <>Adminasas</>,
+            },
+            {
+              path: "settings",
+              component: Outlet,
+              children: [
+                {
+                  path: "local-variables",
+                  component: LocalVariables,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ],
+  public: [
+    { path: "login", component: Login },
+    { path: "register", component: Registration },
+    { path: "otp-login", component: OtpLogin },
+    { path: "forgot-password", component: ForgotPassword },
+    { path: "two-factor-auth", component: TwoFAVerification },
+    { path: "reset-password/:token", component: ResetPassword },
+    { path: "otp-conformation", component: OtpConformation },
+    { path: "email-verification", component: RegisterEmailVerify },
+  ],
+};
+
+
+export default routesConfig;
+
+
+
+
+Layout.js 
+
+import { Footer, Navbar, Sidebar } from "Components";
+import React from "react";
+import { Outlet } from "react-router-dom";
+
+
+const Layout = () => {
+  return (
+    <>
+      <Navbar />
+      <div className="gs-inner-main-wrapper">
+        <Sidebar />
+        <div className="gs-content-footer-wrapper">
+          <div className="gs-content-wrapper">
+            <Outlet />
+          </div>
+          <Footer />
+        </div>
+      </div>
+    </>
+  );
+};
+
+
+export default Layout;
+
+
+
+
+Component import index file 
+
+import { lazy } from "react";
+
+
+import Login from "./Authentication/Login/Login";
+import Registration from "./Authentication/Registration/Registration";
+import ForgotPassword from "./Authentication/Login/ForgotPassword";
+
+
+const Dashboard = lazy(() =>
+  import(/* webpackChunkName: "Dashboard" */ "./AdminPanel/Dashboard/pages")
+);
+
+
+const ProductTourDashboard = lazy(() =>
+  import(
+    /* webpackChunkName: "ProductTourDashboard" */ "./AdminPanel/Dashboard/pages/ProductTourDashboard"
+  )
+);
+
+
+const NPSDashboard = lazy(() =>
+  import(
+    /* webpackChunkName: "NPSDashboard" */ "./AdminPanel/Dashboard/pages/NPSDashboard"
+  )
+);
+
+
+const CheckListDashboard = lazy(() =>
+  import(
+    /* webpackChunkName: "CheckListDashboard" */ "./AdminPanel/Dashboard/pages/CheckListDashboard"
+  )
+);
+
+
+const HotspotsDashboard = lazy(() =>
+  import(
+    /* webpackChunkName: "HotspotsDashboard" */ "./AdminPanel/Dashboard/pages/HotspotsDashboard"
+  )
+);
+
+
+const EventsDashboard = lazy(() =>
+  import(
+    /* webpackChunkName: "EventsDashboard" */ "./AdminPanel/Dashboard/pages/EventsDashboard"
+  )
+);
+
+
+const UsersDashboard = lazy(() =>
+  import(
+    /* webpackChunkName: "UsersDashboard" */ "./AdminPanel/Dashboard/pages/UsersDashboard"
+  )
+);
+
+
+const CompanyDetails = lazy(() =>
+  import(
+    /* webpackChunkName: "CompanyDetails" */ "./UserPanel/CompanyDetails/CompanyDetails"
+  )
+);
+
+
+const Security = lazy(() =>
+  import(/* webpackChunkName: "Security" */ "./UserPanel/Security/Security")
+);
+
+
+const TrackingCode = lazy(() =>
+  import(
+    /* webpackChunkName: "TrackingCode" */ "./UserPanel/TrackingCode/TrackingCode"
+  )
+);
+
+
+const UserProfile = lazy(() =>
+  import(
+    /* webpackChunkName: "UserProfile" */ "./UserPanel/UserProfile/UserProfile"
+  )
+);
+
+
+const ManageDomain = lazy(() =>
+  import(
+    /* webpackChunkName: "ManageDomain" */ "./UserPanel/ManageDomain/ManageDomain"
+  )
+);
+
+
+const Goal = lazy(() =>
+  import(/* webpackChunkName: "Goal" */ "./UserPanel/Goal/Goal")
+);
+
+
+const Team = lazy(() =>
+  import(/* webpackChunkName: "Team" */ "./UserPanel/Team/Team")
+);
+
+
+const Notification = lazy(() =>
+  import(
+    /* webpackChunkName: "Notification" */ "./UserPanel/Notification/Notification"
+  )
+);
+//!---------------------------------------------- System Admin-------------------------------
+
+
+const Billing = lazy(() =>
+  import(/* webpackChunkName: "ManageDomain" */ "./UserPanel/Billing/Billing")
+);
+
+
+const LocalVariables = lazy(() =>
+  import("./AdminPanel/LocalVariables/LocalVariables.jsx")
+);
+
+
+const Theme = lazy(() =>
+  import(/* webpackChunkName: "Theme" */ "./UserPanel/Theme/Theme")
+);
+const RolePermission = lazy(() =>
+  import(
+    /* webpackChunkName: "RolePermission" */ "./UserPanel/RolePermission/RolePermission"
+  )
+);
+
+
+const AddRolePermission = lazy(() =>
+  import(
+    /* webpackChunkName: "AddRolePermission" */ "./UserPanel/RolePermission/AddRolePermission"
+  )
+);
+
+
+const Nps = lazy(() => import(/* webpackChunkName: "Nps" */ "./App/NPS/Nps"));
+
+
+//!---------------------------------------------- Authentication-------------------------------
+
+
+// const Login = lazy(() =>
+//   import(/* webpackChunkName: "Login" */ "./Authentication/Login/Login")
+// );
+
+
+// const Registration = lazy(() =>
+//   import(
+//     /* webpackChunkName: "Registration" */ "./Authentication/Registration/Registration"
+//   )
+// );
+
+
+// const ForgotPassword = lazy(() =>
+//   import(
+//     /* webpackChunkName: "ForgotPassword" */ "./Authentication/Login/ForgotPassword"
+//   )
+// );
+
+
+const OtpLogin = lazy(() =>
+  import(/* webpackChunkName: "OtpLogin" */ "./Authentication/Login/OtpLogin")
+);
+
+
+const TwoFAVerification = lazy(() =>
+  import(
+    /* webpackChunkName: "TwoFAVerification" */ "./Authentication/Login/TwofaVarification"
+  )
+);
+
+
+const ResetPassword = lazy(() =>
+  import(
+    /* webpackChunkName: "ResetPassword" */ "./Authentication/Login/ResetPassword"
+  )
+);
+
+
+const OtpConformation = lazy(() =>
+  import(
+    /* webpackChunkName: "OtpConformation" */ "./Authentication/Login/OtpConformation"
+  )
+);
+const RegisterEmailVerify = lazy(() =>
+  import(
+    /* webpackChunkName: "OtpConformation" */ "./Authentication/Registration/RegisterEmailVerify"
+  )
+);
+
+
+export {
+  //---------------------------------------------- System Admin-------------------------------
+  LocalVariables,
+  //---------------------------------------------- Authentication-------------------------------
+  Login,
+  RegisterEmailVerify,
+  Registration,
+  ForgotPassword,
+  OtpLogin,
+  TwoFAVerification,
+  ResetPassword,
+  OtpConformation,
+  //---------------------------------------------- User Dashboard-------------------------------
+  Dashboard,
+  CompanyDetails,
+  Security,
+  TrackingCode,
+  UserProfile,
+  ProductTourDashboard,
+  NPSDashboard,
+  CheckListDashboard,
+  HotspotsDashboard,
+  EventsDashboard,
+  UsersDashboard,
+  ManageDomain,
+  Goal,
+  Team,
+  Notification,
+  Billing,
+  Theme,
+  RolePermission,
+  AddRolePermission,
+  Nps,
+};
+
+
+
+
+useLogin.js
+
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useReducer,
+} from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { clearCookie, getCookie, setCookie } from "Assets/JS/Cookies";
+import { useLazyQuery } from "@apollo/client";
+import { GET_ALL_USER_PROFILE_ID } from "../../GraphQl";
+import { Observable } from "Assets/JS/Utilities";
+
+
+export const authObserver = new Observable();
+window.authObserver = authObserver;
+
+
+const loginCtx = createContext();
+
+
+const SET_IS_AUTH = "SET_IS_AUTH";
+const SET_IS_LOADING = "SET_IS_LOADING";
+const SET_MESSAGE = "SET_MESSAGE";
+const SET_RESEND_LOADING = "SET_RESEND_LOADING";
+const SET_RESPONSE_DATA = "SET_RESPONSE_DATA";
+const SET_IS_APP_LOADING = "SET_IS_APP_LOADING";
+const SET_USER_DATA = "SET_USER_DATA";
+const RESET_STATE = "RESET_STATE";
+
+
+const initialState = {
+  isAppLoading: true,
+  isAuth: false,
+  isLoading: false,
+  isResendLoading: false,
+  responseData: null,
+  userData: null,
+  isNavigate: false,
+  message: {
+    type: "error",
+    text: "",
+  },
+};
+
+
+const reducer = (state, action) => {
+  const { type, payload } = action;
+
+
+  switch (type) {
+    case SET_USER_DATA: {
+      return {
+        ...state,
+        userData: payload,
+      };
+    }
+    case SET_IS_LOADING: {
+      return {
+        ...state,
+        isLoading: payload,
+      };
+    }
+    case SET_IS_APP_LOADING: {
+      return {
+        ...state,
+        isAppLoading: payload,
+      };
+    }
+    case SET_RESPONSE_DATA: {
+      return {
+        ...state,
+        responseData: payload,
+      };
+    }
+    case SET_RESEND_LOADING: {
+      return {
+        ...state,
+        isResendLoading: payload,
+      };
+    }
+    case SET_IS_AUTH: {
+      return {
+        ...state,
+        isAuth: payload,
+      };
+    }
+    case SET_MESSAGE: {
+      return {
+        ...state,
+        message: {
+          ...state.message,
+          ...payload,
+        },
+      };
+    }
+    case RESET_STATE: {
+      return { ...initialState };
+    }
+    default:
+      return {
+        ...state,
+      };
+  }
+};
+
+
+export const AuthProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+
+  const navigate = useNavigate();
+
+
+  const setIsAppLoading = (isLoading) => {
+    dispatch({
+      type: SET_IS_APP_LOADING,
+      payload: isLoading,
+    });
+  };
+
+
+  const setMessage = (type, text) => {
+    dispatch({
+      type: SET_MESSAGE,
+      payload: {
+        type,
+        text,
+      },
+    });
+  };
+
+
+  const setResponseData = (data) => {
+    dispatch({
+      type: SET_RESPONSE_DATA,
+      payload: data,
+    });
+  };
+
+
+  const setLoading = (isLoading) => {
+    dispatch({
+      type: SET_IS_LOADING,
+      payload: isLoading,
+    });
+  };
+  const setResendLoading = (isLoading) => {
+    dispatch({
+      type: SET_RESEND_LOADING,
+      payload: isLoading,
+    });
+  };
+
+
+  const clearMessage = useCallback(() => {
+    dispatch({
+      type: SET_MESSAGE,
+      payload: {
+        type: "error",
+        text: "",
+      },
+    });
+  }, []);
+
+
+  const logout = useCallback(() => {
+    clearCookie();
+    dispatch({
+      type: RESET_STATE,
+    });
+    window.location.reload();
+  }, []);
+
+
+  useEffect(() => {
+    const unSub = authObserver.subscribe(logout);
+    return unSub;
+  }, [logout]);
+
+
+  ////----------------------------------CHECK USER LOGIN----------------------------------*//
+  const [getProfileData] = useLazyQuery(GET_ALL_USER_PROFILE_ID, {
+    fetchPolicy: "network-only",
+    onCompleted: (item) => {
+      setIsAppLoading(false);
+      dispatch({
+        type: SET_IS_AUTH,
+        payload: true,
+      });
+      dispatch({
+        type: SET_USER_DATA,
+        payload: item.getUserByLoginSession.data,
+      });
+    },
+    onError: ({ networkError }) => {
+      setIsAppLoading(false);
+    },
+    // Used for subsequent executions
+  });
+  ////----------------------------------CHANGE SUB DOMAIN----------------------------------*//
+  const changeSubDomain = () => {
+    let currentHost = process.env.REACT_APP_HOST;
+    const sub_domain = getCookie("sub_domain");
+    if (sub_domain) {
+      currentHost = currentHost.replace("%%subdomain%%", sub_domain);
+    } else currentHost = currentHost.replace("%%subdomain%%.", sub_domain);
+    window.location.host = currentHost;
+  };
+
+
+  ////----------------------------------CHECK USER LOGIN----------------------------------*//
+  const checkUserLove = () =>
+    window.location.hostname === process.env.REACT_APP_DOMAIN;
+
+
+  ////----------------------------------CHECK SUB DOMAIN----------------------------------*//
+  const hasSubDomain = () =>
+    getCookie("sub_domain") &&
+    window.location.host.split(".")[0] === getCookie("sub_domain");
+
+
+  //!------------------------------------------------------------------------------------*//
+  //!----------------------------------CHECK USER LOGIN----------------------------------*//
+  //!------------------------------------------------------------------------------------*//
+
+
+  useEffect(() => {
+    const access_token = getCookie("access_token");
+    const refresh_token = getCookie("refresh_token");
+    const sub_domain = getCookie("sub_domain");
+
+
+    if (access_token && refresh_token && sub_domain) {
+      if (hasSubDomain()) getProfileData();
+      else changeSubDomain();
+    } else {
+      clearCookie();
+      setIsAppLoading(false);
+      if (checkUserLove()) return;
+      changeSubDomain();
+    }
+  }, [getProfileData]);
+
+
+  const handleAuthSuccess = (userData) => {
+    const {
+      access_token,
+      refresh_token,
+      sub_domain,
+      is_navigate,
+      currency: { symbol },
+    } = userData;
+    setCookie("access_token", access_token, 100);
+    setCookie("refresh_token", refresh_token, 100);
+    setCookie("sub_domain", sub_domain, 100);
+    setCookie("currency", symbol, 100);
+
+
+    if (is_navigate) {
+      if (hasSubDomain()) getProfileData();
+      else changeSubDomain();
+    } else {
+      if (hasSubDomain()) getProfileData();
+      else changeSubDomain();
+    }
+  };
+  //*----------------------------------Handle  Login----------------------------------*//
+  const handleLogin = async (data) => {
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_LOGIN_SERVER}/user/login`,
+        {
+          email_id: data.email_id,
+          password: data.password,
+          remember_me: data.remember_me ? data.remember_me : false,
+          grant_type: "password",
+        },
+        { withCredentials: true }
+      );
+
+
+      if (response.status) {
+        setResponseData(response);
+        setMessage("success", response?.data?.message);
+        setLoading(false);
+        const userData = response.data.data;
+
+
+        const { two_fa_status, emailVerification } = userData;
+
+
+        if (emailVerification) {
+          navigate("/otp-conformation", {
+            state: userData,
+          });
+          return;
+        }
+
+
+        if (two_fa_status) {
+          navigate("/two-factor-auth", {
+            state: userData,
+          });
+          return;
+        }
+
+
+        handleAuthSuccess(userData);
+      }
+    } catch (error) {
+      setLoading(false);
+      setResponseData(error.response?.data);
+      setMessage("error", error.response?.data?.message || error.message);
+    }
+  };
+  //*----------------------------------HANDLE TWO-FA VERIFICATION----------------------------------*//
+  const handleTwoFAVerification = async (data, Otp) => {
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_LOGIN_SERVER}/user/twofa-login`,
+        {
+          otp: Otp.otp1 + Otp.otp2 + Otp.otp3 + Otp.otp4 + Otp.otp5 + Otp.otp6,
+          two_factor_token: data.two_factor_token,
+        },
+        { withCredentials: true }
+      );
+      if (response.status) {
+        const userData = response.data.data;
+
+
+        setLoading(false);
+        handleAuthSuccess(userData);
+      }
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+  //*----------------------------------HANDLE RESEND  TWO-FA VERIFICATION----------------------------------*//
+  const handleResendTwoFA = async (data) => {
+    setResendLoading(true);
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_LOGIN_SERVER}/user/twofa-resend-otp`,
+        {
+          two_factor_token: data.two_factor_token,
+        },
+        { withCredentials: true }
+      );
+      if (response.status) {
+        setResendLoading(false);
+        setMessage("success", response?.data?.message);
+      }
+    } catch (error) {
+      setResendLoading(false);
+
+
+      setMessage("error", error.response?.data?.message || error.message);
+    }
+  };
+
+
+  //*----------------------------------Email OTP Verification----------------------------------*//
+  const handleOtpVerification = async (Otp, data) => {
+    setLoading(true);
+
+
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_LOGIN_SERVER}/user/email-verification-otp`,
+        {
+          otp: Otp.otp1 + Otp.otp2 + Otp.otp3 + Otp.otp4 + Otp.otp5 + Otp.otp6,
+          email_verification_token: data.email_verification_token,
+        },
+        { withCredentials: true }
+      );
+      if (response.status) {
+        setLoading(false);
+        const userData = response.data.data;
+
+
+        handleAuthSuccess(userData);
+        setMessage("success", response?.data?.message);
+      }
+    } catch (error) {
+      setLoading(false);
+
+
+      setMessage("error", error.response?.data?.message || error.message);
+    }
+  };
+
+
+  //*---------------------------------Resend Email OTP----------------------------------*//
+  const handleResendEmailOtp = async (data) => {
+    setResendLoading(true);
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_LOGIN_SERVER}/user/resend-email-verification-otp`,
+        {
+          email_verification_token: data.email_verification_token,
+        },
+        { withCredentials: true }
+      );
+      setMessage("success", response?.data?.message);
+    } catch (error) {
+      setResendLoading(false);
+
+
+      setMessage("error", error.response?.data?.message || error.message);
+    }
+  };
+
+
+  //*----------------------------------LOGIN WITH OTP FUNCTION HANDLER----------------------------------*//
+  const handleOtpLogin = (data, state, otp, responseData) => {
+    state?.responseData?.data?.loginWithOTP
+      ? handleGetOtp(data)
+      : handleLoginOtpVerification(otp, responseData);
+  };
+
+
+  //*----------------------------------Get OTP Handler----------------------------------*//
+  const handleGetOtp = async (data) => {
+    setLoading(true);
+
+
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_LOGIN_SERVER}/user/send-otp`,
+        {
+          email_id: data.email_id,
+        },
+        { withCredentials: true }
+      );
+      if (response.status) {
+        setLoading(false);
+        setResponseData(response);
+        setMessage("success", response?.data?.message);
+        navigate("/otp-login", { state: response.data });
+      }
+    } catch (error) {
+      setLoading(false);
+
+
+      setMessage("error", error.response?.data?.message || error.message);
+    }
+  };
+
+
+  //*----------------------------------LOG IN WITH OTP VERIFICATION----------------------------------*//
+  const handleLoginOtpVerification = async (Otp, responseData) => {
+    setLoading(true);
+
+
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_LOGIN_SERVER}/user/login-with-otp`,
+        {
+          email_id: responseData.data.data.email_id,
+          otp: Otp.otp1 + Otp.otp2 + Otp.otp3 + Otp.otp4 + Otp.otp5 + Otp.otp6,
+          remember_me: true,
+        },
+        { withCredentials: true }
+      );
+
+
+      if (response.status) {
+        setLoading(false);
+
+
+        const userData = response.data.data;
+
+
+        setLoading(false);
+        handleAuthSuccess(userData);
+      }
+    } catch (error) {
+      setLoading(false);
+
+
+      setMessage("error", error.response?.data?.message || error.message);
+    }
+  };
+
+
+  //*--------------------------------------HANDLE RESEND OTP OF OTP LOGIN ----------------------------------------*/
+  const handleResendOtp = async (dataItems) => {
+    setResendLoading(true);
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_LOGIN_SERVER}/user/resend-otp`,
+        {
+          email_id: dataItems,
+        },
+        { withCredentials: true }
+      );
+      if (response.status) {
+        setResendLoading(false);
+        setResponseData(response);
+        navigate("/otp-login", { state: response.data });
+
+
+        setMessage("success", response?.data?.message);
+      }
+    } catch (error) {
+      setResendLoading(false);
+
+
+      setMessage("error", error.response?.data?.message || error.message);
+    }
+  };
+  //*-------------------> FORGOT FORM HANDLER <------------------------------
+  const handleForgotPassword = async (dataItems) => {
+    setLoading(true);
+    if (dataItems.email_id) {
+      try {
+        const response = await axios.post(
+          `${process.env.REACT_APP_LOGIN_SERVER}/user/forgot-password`,
+          {
+            email_id: dataItems.email_id,
+          },
+          { withCredentials: true }
+        );
+        if (response.status) {
+          setLoading(false);
+          setMessage("success", response?.data?.message);
+        }
+      } catch (error) {
+        setLoading(false);
+
+
+        setMessage("error", error.response?.data?.message || error.message);
+      }
+    }
+  };
+  //?--------------------> RESET FORM HANDLER <------------------------------
+  const handleResetPassword = async (dataItems, params) => {
+    setLoading(true);
+    if (dataItems.password === dataItems.conform_password) {
+      try {
+        const response = await axios.post(
+          `${process.env.REACT_APP_LOGIN_SERVER}/user/reset-password`,
+          {
+            password: dataItems.password,
+            token: params && params.token,
+          },
+          { withCredentials: true }
+        );
+        if (response.status) {
+          setLoading(false);
+          setMessage("success", response?.data?.message);
+          navigate("/login");
+        }
+      } catch (error) {
+        setLoading(false);
+
+
+        setMessage("error", error.response?.data?.message || error.message);
+      }
+    } else {
+      setLoading(false);
+      setMessage("error", "Password and confirm password should be same");
+    }
+  };
+
+
+  //!------------------------------------------------------------------------------------*//
+  //!----------------------------------REGISTER USER FUNCTION----------------------------*//
+  //!------------------------------------------------------------------------------------*//
+
+
+  //?----------------------------------REGISTER USER FUNCTION HANDLER----------------------------------*//
+  const handleRegister = async (data) => {
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_LOGIN_SERVER}/user/user-register`,
+        {
+          email_id: data.email_id,
+          password: data.password,
+          user_name: data.user_name,
+          company_name: data.company_name,
+        }
+      );
+      if (response.status) {
+        setLoading(false);
+        // setMessage("success", response?.data?.message);
+        // navigate("/login");
+        setResponseData(response);
+        setMessage("success", response?.data?.message);
+        setLoading(false);
+        const userData = response.data.data;
+
+
+        const { emailVerification } = userData;
+
+
+        if (emailVerification) {
+          navigate("/email-verification", {
+            state: userData,
+          });
+          return;
+        }
+      }
+    } catch (error) {
+      setLoading(false);
+
+
+      setMessage("error", error.response?.data?.message || error.message);
+    }
+  };
+
+
+  //?---------------------------------Resend Email OTP----------------------------------*//
+  const handleResendEmailVerifyOtp = async (data) => {
+    setResendLoading(true);
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_LOGIN_SERVER}/user/resend-email-verification-otp`,
+        {
+          email_verification_token: data.email_verification_token,
+        },
+        { withCredentials: true }
+      );
+      setMessage("success", response?.data?.message);
+    } catch (error) {
+      setResendLoading(false);
+
+
+      setMessage("error", error.response?.data?.message || error.message);
+    }
+  };
+  return (
+    <loginCtx.Provider
+      value={{
+        ...state,
+        handleLogin,
+        handleOtpVerification,
+        handleResendEmailOtp,
+        handleTwoFAVerification,
+        clearMessage,
+        handleResendTwoFA,
+        handleOtpLogin,
+        handleResendOtp,
+        handleForgotPassword,
+        handleResetPassword,
+        handleRegister,
+        handleResendEmailVerifyOtp,
+      }}
+    >
+      {children}
+    </loginCtx.Provider>
+  );
+};
+
+
+export const useLogin = () => useContext(loginCtx);
+
+
+
+
+ApolloClient.js
+
+import { createUploadLink } from "apollo-upload-client";
+import { ApolloClient, ApolloLink, InMemoryCache, from } from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import { onError } from "@apollo/client/link/error";
+import { getCookie, setCookie } from "Assets/JS/Cookies";
+import axios from "axios";
+import { Observable } from "apollo-link";
+import { authObserver } from "Product/Hooks/Authentication/UseLogin";
+let urlWithSubdomainAdmin =
+  `${process.env.REACT_APP_GRAPHQL_SERVER}/graphql`.split("//");
+
+
+let urlWithSubdomainOnboarding =
+  `${process.env.REACT_APP_ONBOARDING_SERVER}/graphql`.split("//");
+
+
+const link = createUploadLink({
+  uri: `${urlWithSubdomainAdmin[0]}//${getCookie("sub_domain")}.${
+    urlWithSubdomainAdmin[1]
+  }`,
+});
+
+
+const onboardingLink = createUploadLink({
+  uri: `${urlWithSubdomainOnboarding[0]}//${getCookie("sub_domain")}.${
+    urlWithSubdomainOnboarding[1]
+  }`,
+});
+
+
+const authLink = setContext((_, { headers }) => {
+  const token = getCookie("access_token");
+
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
+
+const promiseToObservable = (promise) =>
+  new Observable((subscriber) => {
+    promise.then(
+      (value) => {
+        if (subscriber.closed) return;
+        subscriber.next(value);
+        subscriber.complete();
+      },
+      (err) => {
+        authObserver.notify();
+        return subscriber.error(err);
+      }
+    );
+    return subscriber; // this line can removed, as per next comment
+  });
+
+
+const refreshToken = () => {
+  const token = getCookie("refresh_token");
+  return axios.post(
+    `${process.env.REACT_APP_LOGIN_SERVER}/user/refresh-token`,
+    {
+      grant_type: "refresh_token",
+    },
+    {
+      headers: {
+        authorization: token ? `Bearer ${token}` : "",
+      },
+    }
+  );
+};
+
+
+const errorLink = onError(
+  ({
+    forward,
+    operation,
+    networkError: {
+      result: { error, statusCode },
+    },
+  }) => {
+    if (statusCode === 401 && error[0] === "Token Expired") {
+      // FETCH NEW TOKEN
+      return promiseToObservable(refreshToken()).flatMap((value) => {
+        const token = value?.data?.data?.access_token;
+        setCookie("access_token", token, 10000);
+        setCookie("refresh_token", value?.data?.data?.refresh_token, 10000);
+        setCookie("sub_domain", value?.data?.data?.sub_domain, 10000);
+        operation.setContext(({ headers = {} }) => ({
+          headers: {
+            authorization: token ? `Bearer ${token}` : "",
+          },
+        }));
+        return forward(operation);
+      });
+    } else if (statusCode === 401 && error[0] === "Invalid Token") {
+      authObserver.notify();
+      // clearCookie();
+      // window.location.replace(`${process.env.REACT_APP_SITE_URL}/login`);
+      return;
+    }
+  }
+);
+
+
+const httpLink = ApolloLink.split(
+  (operation) => operation.getContext().clientName === "onboarding",
+  authLink.concat(onboardingLink),
+  authLink.concat(link)
+);
+
+
+export const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  link: from([errorLink, httpLink]),
+});
+
+
+
+
+
+

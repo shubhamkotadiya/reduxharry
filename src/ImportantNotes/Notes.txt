@@ -1,0 +1,180 @@
+clear cookie
+click outside function
+sidebar
+grant_type: "refresh_token"
+product.jsx file
+set cookie
+Apolloclient.js 
+sign in otp input
+Throttling
+debounce
+bubble 
+Abort controller
+scope: global, module, blocked, function   (
+
+https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/#:~:text=var%20declarations%20are%20globally%20scoped%20or%20function%20scoped%20while%20let,the%20top%20of%20their%20scope   
+
+https://blog.webdevsimplified.com/2022-10/js-scoping/
+
+)
+
+
+name of css file Checklist.module.css
+useTransition hooks
+useMemo, useCallback
+Difference between async/await and Promises
+
+Routes conditions - https://medium.com/@pranayprajapati101/protect-routes-from-unauthorised-access-in-reactjs-d4c9df21f74e
+
+SVG -> fill:  currentColor -> import { ReactComponent as SearchIcon } from "../../Assets/Icons/search.svg";
+ <SearchIcon width={18} height={18} stroke={"#eee"} fill={“#000”}/>
+
+
+React form validation   
+https://medium.com/@sasidharan_39972/how-to-a-form-validation-in-react-hook-form-a5cc6a8d9772
+
+To fetch data
+https://medium.com/@amardeep.developper/no-need-to-use-useeffect-to-fetch-data-in-react-b212ddfacd10
+React-form-hook in Material ui
+
+Forwardref in react
+const FancyButton = React.forwardRef((props, ref) => (
+ <button ref={ref} className="FancyButton">
+   {props.children}
+  </button>
+));
+
+// You can now get a ref directly to the DOM button:
+const ref = React.createRef();
+<FancyButton ref={ref}>Click me!</FancyButton>;
+
+
+FONT 
+common.css
+@import "./Font.css";
+@import "./Variables.css";
+
+
+Font.css
+@font-face {
+    font-family: "BRHendrix_Regular";
+   src: url("../Fonts/BRHendrix-Regular.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "BRHendrix_Semi_Bold";
+    src: url("../Fonts/BRHendrix-SemiBold.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "BRHendrix_Bold";
+    src: url("../Fonts/BRHendrix-Bold.ttf") format("truetype");
+  }
+
+
+Variables.css
+:root {
+  --primary-color: #00abff;
+  --primary-bk-color: #73d1ff;
+  --primary-light-color: #b7e7ff;
+  --secondary-color: #000000;
+  }
+-> Difference between forEach and map
+
+-> NOTES: always use hooks component wise. So if one hook update of component A, it will not re-render component B. and Do not write JSX element into customHook function.
+ 
+-> Destructuring of object of object of object and set initial values
+
+const {
+    data: {
+      getMyWorkspaceInjectionScript: {
+        data: { scriptContent: scriptContentData },
+      },
+    } = {
+      getMyWorkspaceInjectionScript: {
+        data: {
+          scriptContent: "dummyScript",
+        },
+      },
+    },
+ 
+Const data = {
+        "getMyWorkspaceInjectionScript": {
+            "status": true,
+            "statusCode": 200,
+            "message": "Account Injection Script Generated Successfully",
+            "data": {
+                "scriptContent": "<script>\r\n  (function (l,o,v,e) {l[\"a_id\"] = e; l[\"dm\"] = l.location.hostname; l[v] = l[v] || []; if (l[o]) return; l[o] = {};})(window, \"userlove\", \"userloveDL\", \"ABCD123456\");\r\n  document.write(`<script src=\"https://cdn.userlove.dev/wrapper.js?v=${Date.now()}\"><\\/script>`);\r\n</script>\r\n\r\n"
+            },
+            "error": null,
+            "__typename": "MutationResponse"
+        }
+    }
+ 
+
+
+const {
+    data: { getAllDomains: { data: rows = [], rowsCount: count = 0 } } = {
+      getAllDomains: {},
+    },
+    loading: getDomainLoading,
+    refetch: refetchRecords,
+  } = useQuery(GET_ALL_DOMAINS, {
+   
+    context: {
+      clientName: "onboarding",
+    },
+   
+  });
+ 
+  to recall getAllDomains query => refetchRecords()
+
+
+ -> Pass data to children- {props.children({ search })}
+    export const SearchableDropdown = forwardRef((props, ref) => {
+  const [search, setSearch] = useState("");
+
+  if (!isFunc(props.children)) throw Error("Children has to be a function.");
+
+  const handleChange = (e) => setSearch(e.target.value);
+
+  return (
+    <Dropdown {...props} ref={ref}>
+      
+      {props.children({ search })}
+    </Dropdown>
+  );
+});
+
+
+
+<SearchableDropdown>
+    {({ search }) =>getAllCountry .map((item) => {
+                            return (
+                              <Dropdown.Item
+                                key={item.country_id}
+                                value={item.country_id}
+                              >
+                                {item.country}
+                              </Dropdown.Item>
+                            );
+                          })
+                      }
+                    </SearchableDropdown>
+
+
+—-----------
+
+ const a = {
+    o1: "abc",
+    o2: "hgsdh",
+    o3: "xbb",
+  };
+  const b = { a };
+  const c = {...a}
+  console.log("b----------- ", b.a.o1);
+  console.log("c----------", c);
+  const arr1 = [1, 2, 3, 4];
+  const arr2 = [arr1];
+  const arr3 = [...arr1];
+  console.log("arr2-----------", arr2);
+  console.log("arr3-----------", arr3);
+
